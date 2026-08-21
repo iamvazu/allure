@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ScrollHero from "@/components/ScrollHero";
 import ServiceGrid from "@/components/ServiceGrid";
 import PortfolioCards from "@/components/PortfolioCards";
@@ -60,35 +61,83 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="process-section" id="process">
+      <section className="journey-section" id="process">
         <div className="wrap">
           <div className="section-head">
             <div>
               <span className="eyebrow">How it works</span>
-              <h2>Four steps, start to handover</h2>
+              <h2>Four stages, one working drawing</h2>
+            </div>
+            <Link className="btn btn-ghost" href="/process">
+              See the full process
+            </Link>
+          </div>
+          <div className="journey">
+            <span className="journey-line" aria-hidden="true" />
+            {[
+              { n: "01", title: "Initial Consultation", text: "A designer walks the space with you and scopes budget and direction honestly." },
+              { n: "02", title: "Design & Planning", text: "Layout, lighting, materials and furniture resolved in detail before anything is built." },
+              { n: "03", title: "Production & Implementation", text: "Modular systems and finishes produced and installed under one project manager." },
+              { n: "04", title: "Project Handover", text: "A finished home, walked through room by room, with support after." },
+            ].map((s, i) => (
+              <div className={`journey-step ${i % 2 === 0 ? "is-top" : "is-bottom"}`} key={s.n}>
+                <div className="journey-card">
+                  <span className="journey-num">{s.n}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+                <span className="journey-dot" aria-hidden="true" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="why-section" id="why-us">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Why us</span>
+              <h2>Why Bangalore families choose us</h2>
             </div>
           </div>
-          <div className="process-grid">
-            <div className="process-step">
-              <span className="step-num">01</span>
-              <h3>Initial Consultation</h3>
-              <p>A designer walks the space with you, listens to how you live in it, and scopes budget and direction honestly.</p>
-            </div>
-            <div className="process-step">
-              <span className="step-num">02</span>
-              <h3>Design &amp; Planning</h3>
-              <p>Layout, lighting, materials and furniture resolved in detail before anything is built.</p>
-            </div>
-            <div className="process-step">
-              <span className="step-num">03</span>
-              <h3>Production &amp; Implementation</h3>
-              <p>Modular systems, custom furniture and finishes produced and installed under one project manager.</p>
-            </div>
-            <div className="process-step">
-              <span className="step-num">04</span>
-              <h3>Project Handover</h3>
-              <p>A finished home, walked through room by room, with support in place for whatever needs adjusting after.</p>
-            </div>
+          <div className="why-list">
+            {[
+              {
+                n: "01",
+                title: "Transparent",
+                highlight: "Process",
+                text: "Every stage of your project is handled in the open — from the first consultation to material selection and final handover, you get a real timeline and cost bracket in writing before any design fee is on the table.",
+              },
+              {
+                n: "02",
+                title: "Dedicated",
+                highlight: "Supervision",
+                text: "One project manager, named at kickoff, coordinates every trade on your project — civil, electrical, modular, soft furnishing — so you're never chasing five different people to find out what's happening on-site.",
+              },
+              {
+                n: "03",
+                title: "Assured",
+                highlight: "Quality",
+                text: "Real finishes and materials, not renderings. The studio's Experience Center in Jakkur lets you handle the actual stone, wood and fabric that will go into your home before you commit to anything.",
+              },
+              {
+                n: "04",
+                title: "Enduring",
+                highlight: "Design",
+                text: "Layout resolved before styling begins, materials chosen to age well — homes built to still feel considered in ten years, not just on the day the photographs are taken.",
+              },
+            ].map((w) => (
+              <div className="why-row" key={w.n}>
+                <div className="why-row-body">
+                  <h3 className="why-row-title">
+                    {w.title} <span className="hl">{w.highlight}</span>.
+                  </h3>
+                  <p className="why-row-text">{w.text}</p>
+                </div>
+                <span className="why-row-num" aria-hidden="true">{w.n}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

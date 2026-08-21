@@ -27,6 +27,7 @@ export default function ContactPage() {
               <a className="btn btn-ghost" href={`mailto:${brand.email}`}>{brand.email}</a>
             </div>
             <p style={{ marginTop: 28, fontSize: "0.85rem", color: "var(--ink-muted)" }}>{brand.address}</p>
+            <img src="/images/contact/atmosphere.jpg" alt="Studio atmosphere" style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} />
           </div>
         </div>
       </section>

@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const index = services.findIndex((s) => s.slug === slug);
+  const service = services[index];
   if (!service) notFound();
 
   const schema = {
@@ -42,15 +43,42 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      <section style={{ padding: "0 0 80px" }}>
-        <div className="wrap" style={{ maxWidth: 720 }}>
-          {service.description.map((p, i) => (
-            <p key={i} style={{ color: "var(--ink-muted)", lineHeight: 1.7, marginBottom: 18, fontSize: "1.02rem" }}>
-              {p}
-            </p>
-          ))}
-          <div style={{ marginTop: 30 }}>
-            <Link className="btn btn-solid" href="/contact">Book a Consultation</Link>
+      <section className="manifesto manifesto-compact">
+        <span className="manifesto-mark" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+        <div className="wrap manifesto-grid">
+          <div className="manifesto-main">
+            {service.description.map((p, i) => (
+              <p className="service-para" key={i}>
+                {p}
+              </p>
+            ))}
+            <div style={{ marginTop: 8 }}>
+              <Link className="btn btn-solid" href="/contact">
+                Book a Consultation
+              </Link>
+            </div>
+          </div>
+          <div className="manifesto-rule" aria-hidden="true" />
+          <div className="manifesto-aside">
+            <span className="eyebrow">At a glance</span>
+            <ul className="service-facts">
+              <li>
+                <strong>Service</strong>
+                {service.name} — {String(index + 1).padStart(2, "0")} of {String(services.length).padStart(2, "0")}
+              </li>
+              <li>
+                <strong>Where</strong>
+                All of Bangalore, no exceptions
+              </li>
+              <li>
+                <strong>Starts with</strong>
+                A free initial consultation, no obligation
+              </li>
+              <li>
+                <strong>Studio</strong>
+                {brand.name} · {brand.tagline}
+              </li>
+            </ul>
           </div>
         </div>
       </section>

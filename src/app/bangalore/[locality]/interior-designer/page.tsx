@@ -39,6 +39,7 @@ export default async function LocalityPage({ params }: { params: Promise<{ local
           <span className="eyebrow">Interior Designer · {locality.name}</span>
           <h1>Interior design in {locality.name}, Bangalore</h1>
           <p className="lede">{locality.blurb}</p>
+          <img src={`/images/localities/${locality.slug}.jpg`} alt={`Interior design in ${locality.name}`} style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
         </div>
       </section>
 

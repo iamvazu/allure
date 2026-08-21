@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   },
   description:
     "Everlasting Luxury — full-home interior design, modular kitchens, wardrobes and renovation across every part of Bangalore. Book a consultation with The Allure Studio.",
+  openGraph: {
+    images: ["/images/og-cover.jpg"],
+  },
 };
 
 const localBusinessSchema = {

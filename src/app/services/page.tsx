@@ -18,6 +18,7 @@ export default function ServicesPage() {
             From a single room styling refresh to a full turnkey home, every service here can be
             booked on its own or combined into one of the studio&apos;s Edit packages.
           </p>
+          <img src="/images/services/hero.jpg" alt="Interior Design Services" style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
         </div>
       </section>
       <section className="services-section">

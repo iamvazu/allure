@@ -17,6 +17,7 @@ export default function AboutPage() {
             styling refresh to a full turnkey build-out — with one design discipline running
             through every project: restraint, real materials, nothing chosen to chase a trend.
           </p>
+          <img src="/images/about/studio-detail.jpg" alt="Studio work table" style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
         </div>
       </section>
       <section style={{ padding: "0 0 100px" }}>
@@ -33,6 +34,7 @@ export default function AboutPage() {
             see in person — real finishes, real furniture, not renders. Book a visit, or start
             with a consultation wherever you are in Bangalore.
           </p>
+          <img src="/images/about/experience-center.jpg" alt="Experience Center showroom" style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} />
         </div>
       </section>
     </main>

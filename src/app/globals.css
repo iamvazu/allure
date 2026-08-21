@@ -293,6 +293,64 @@ section { position: relative; z-index: 10; background: var(--bg); }
   .edit-row-desc { text-align: right; }
 }
 
+/* JOURNEY — the homepage's four-stage teaser, drawn like a working drawing:
+   a single dimension line running through the section with each stage
+   pinned to it and alternating above/below, connected by a short leader
+   line. Deliberately not another card grid or index list. */
+.journey-section { padding: 30px 0 120px; }
+.journey { position: relative; display: flex; align-items: center; gap: clamp(8px, 1.6vw, 24px); padding: 20px 0; }
+.journey-line { position: absolute; left: 0; right: 0; top: 50%; border-top: 1px dashed var(--border); z-index: 0; }
+.journey-step { position: relative; flex: 1; min-width: 0; height: 340px; }
+/* Card is pinned a fixed distance off the center line — never derived from
+   flex auto-margins — so a longer line of copy on one step can never push
+   its numeral down into the dot on the line. */
+.journey-card { position: absolute; left: 50%; transform: translateX(-50%); z-index: 1; text-align: center; padding: 0 clamp(6px, 1.2vw, 16px); width: 100%; max-width: 260px; }
+.journey-step.is-top .journey-card { bottom: calc(50% + 26px); }
+.journey-step.is-bottom .journey-card { top: calc(50% + 26px); }
+.journey-step.is-top .journey-card::after,
+.journey-step.is-bottom .journey-card::before {
+  content: ""; position: absolute; left: 50%; width: 1px; background: var(--border); transform: translateX(-50%);
+}
+.journey-step.is-top .journey-card::after { bottom: -26px; height: 26px; }
+.journey-step.is-bottom .journey-card::before { top: -26px; height: 26px; }
+.journey-num { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 1.8vw, 1.4rem); color: var(--terracotta); margin-bottom: 8px; }
+.journey-card h3 { font-size: clamp(0.98rem, 1.5vw, 1.15rem); line-height: 1.25; }
+.journey-card p { margin-top: 10px; color: var(--ink-muted); font-size: 0.84rem; line-height: 1.55; }
+.journey-dot { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 10px; height: 10px; border-radius: 50%; background: var(--terracotta); box-shadow: 0 0 0 6px var(--bg); }
+@media (max-width: 860px) {
+  .journey { flex-direction: column; gap: 0; padding: 20px 0; }
+  .journey-line { left: 5px; right: auto; top: 0; bottom: 0; width: 0; border-top: none; border-left: 1px dashed var(--border); }
+  .journey-step { flex-direction: row; align-items: flex-start; justify-content: flex-start; height: auto; min-height: 0; width: 100%; padding: 22px 0; display: flex; }
+  .journey-card { position: static; transform: none; margin: 0 !important; padding: 0 0 0 28px !important; text-align: left; max-width: none; width: auto; }
+  .journey-card::before, .journey-card::after { display: none !important; }
+  .journey-dot { top: 6px; left: 0; transform: none; box-shadow: 0 0 0 5px var(--bg); }
+}
+
+/* WHY US — "why families choose us" bank: a bold display-serif claim on the
+   left, a huge pale-terracotta numeral on the right, hairline dividers
+   between rows. Same bones as the reference layout the client sent, redrawn
+   in the site's own type and color system rather than a generic sans-serif
+   black-and-white treatment. */
+.why-section { padding: 20px 0 130px; }
+.why-list { margin-top: 8px; border-top: 1px solid var(--border); }
+.why-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(16px, 4vw, 56px); padding: clamp(32px, 5vw, 50px) 0; border-bottom: 1px solid var(--border); }
+.why-row-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 3.2vw, 2.15rem); color: var(--ink); line-height: 1.2; }
+.why-row-title .hl { display: inline-block; padding: 0 10px; margin: 0 1px; border-radius: 2px; background: color-mix(in srgb, var(--terracotta) 16%, transparent); font-style: italic; }
+.why-row-text { margin-top: 14px; max-width: 62ch; color: var(--ink-muted); line-height: 1.75; font-size: 1rem; }
+.why-row-num { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1; color: color-mix(in srgb, var(--terracotta) 30%, transparent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 640px) {
+  .why-row { grid-template-columns: 1fr; gap: 10px; }
+  .why-row-num { order: -1; font-size: 2.4rem; }
+}
+
+/* SERVICE DETAIL — reuses .manifesto's asymmetric split for the per-service
+   description + a compact "at a glance" aside, instead of a single plain
+   column of paragraphs. */
+.service-para { color: var(--ink-muted); line-height: 1.78; font-size: 1.03rem; margin: 0 0 20px; max-width: 60ch; }
+.service-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+.service-facts li { font-size: 0.95rem; color: var(--ink-muted); line-height: 1.5; }
+.service-facts li strong { display: block; font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 5px; }
+
 .experience-section { padding: 20px 0 100px; }
 .exp-box { background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: clamp(30px, 5vw, 56px); display: grid; grid-template-columns: 1fr; gap: 30px; }
 @media (min-width: 760px) { .exp-box { grid-template-columns: 1fr 1fr; align-items: center; } }
@@ -300,18 +358,32 @@ section { position: relative; z-index: 10; background: var(--bg); }
 .exp-box p { margin-top: 14px; color: var(--ink-muted); line-height: 1.6; }
 .exp-actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* FAQ — same numeral + hairline-row language as the services and process
+   indexes, so this reads as one system rather than a bolted-on accordion. */
 .faq-section { padding: 20px 0 100px; }
-.faq-list { max-width: 780px; }
+.faq-list { max-width: 860px; border-top: 1px solid var(--border); }
 .faq-item { border-bottom: 1px solid var(--border); }
-.faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: none; border: none; text-align: left; padding: 20px 0; font-size: 1rem; font-weight: 500; color: var(--ink); cursor: pointer; font-family: inherit; }
+.faq-q {
+  width: 100%; display: grid; grid-template-columns: clamp(38px, 5vw, 56px) 1fr auto;
+  align-items: center; column-gap: clamp(14px, 2.4vw, 28px);
+  background: none; border: none; text-align: left; cursor: pointer;
+  padding: clamp(20px, 2.8vw, 27px) clamp(2px, 0.6vw, 6px);
+}
+.faq-num { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.05rem, 1.8vw, 1.35rem); color: color-mix(in srgb, var(--terracotta) 34%, transparent); font-variant-numeric: tabular-nums; transition: color .25s ease; }
+.faq-item.is-open .faq-num { color: var(--terracotta); }
+.faq-q-text { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.02rem, 1.7vw, 1.24rem); color: var(--ink); line-height: 1.35; }
 .faq-icon { position: relative; width: 16px; height: 16px; flex: none; }
 .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: var(--terracotta); border-radius: 2px; }
 .faq-icon::before { width: 16px; height: 2px; top: 7px; left: 0; }
 .faq-icon::after { width: 2px; height: 16px; top: 0; left: 7px; transition: transform .25s ease; }
 .faq-item.is-open .faq-icon::after { transform: rotate(90deg); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.faq-a p { padding: 0 0 20px; color: var(--ink-muted); line-height: 1.6; max-width: 640px; }
+.faq-a p { padding: 0 0 26px clamp(52px, 7.4vw, 84px); color: var(--ink-muted); line-height: 1.65; font-size: 0.96rem; max-width: 620px; }
 .faq-item.is-open .faq-a { max-height: 320px; }
+@media (max-width: 560px) {
+  .faq-q { grid-template-columns: 32px 1fr auto; }
+  .faq-a p { padding-left: 32px; }
+}
 
 .localities-section { padding: 20px 0 100px; text-align: center; }
 .chip-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
