@@ -1,0 +1,163 @@
+import ScrollHero from "@/components/ScrollHero";
+import ServiceGrid from "@/components/ServiceGrid";
+import PortfolioCards from "@/components/PortfolioCards";
+import FaqAccordion from "@/components/FaqAccordion";
+import LocalityChips from "@/components/LocalityChips";
+import { flagshipProject, projects, services, faqs, localities, aanganProject } from "@/lib/data";
+
+export default function Home() {
+  return (
+    <main id="top">
+      <ScrollHero
+        scenes={aanganProject.scenes}
+        imageDir={aanganProject.imageDir}
+        ctaHref={`/portfolio/${aanganProject.slug}`}
+        ctaLabel="See the full project"
+      />
+
+      <section className="manifesto">
+        <span className="manifesto-mark" aria-hidden="true">01</span>
+        <div className="wrap manifesto-grid">
+          <div className="manifesto-main">
+            <h1>
+              Everlasting <em>luxury</em>, built to still feel considered in ten years — not
+              just on handover day.
+            </h1>
+          </div>
+          <div className="manifesto-rule" aria-hidden="true" />
+          <div className="manifesto-aside">
+            <span className="eyebrow">The Allure Studio · Bengaluru</span>
+            <p className="lede">
+              We design and build complete homes across Bangalore: layout, lighting, furniture,
+              modular kitchens and wardrobes, and every material decision in between. Calm,
+              deeply personal, and made to last — that&apos;s the whole brief, every time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="services-section" id="services">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">What we do</span>
+              <h2>Every service, in the open</h2>
+            </div>
+          </div>
+          <ServiceGrid services={services} />
+        </div>
+      </section>
+
+      <section className="portfolio-section" id="portfolio">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Selected work</span>
+              <h2>Two homes, two registers</h2>
+            </div>
+          </div>
+          <PortfolioCards projects={projects} />
+        </div>
+      </section>
+
+      <section className="process-section" id="process">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">How it works</span>
+              <h2>Four steps, start to handover</h2>
+            </div>
+          </div>
+          <div className="process-grid">
+            <div className="process-step">
+              <span className="step-num">01</span>
+              <h3>Initial Consultation</h3>
+              <p>A designer walks the space with you, listens to how you live in it, and scopes budget and direction honestly.</p>
+            </div>
+            <div className="process-step">
+              <span className="step-num">02</span>
+              <h3>Design &amp; Planning</h3>
+              <p>Layout, lighting, materials and furniture resolved in detail before anything is built.</p>
+            </div>
+            <div className="process-step">
+              <span className="step-num">03</span>
+              <h3>Production &amp; Implementation</h3>
+              <p>Modular systems, custom furniture and finishes produced and installed under one project manager.</p>
+            </div>
+            <div className="process-step">
+              <span className="step-num">04</span>
+              <h3>Project Handover</h3>
+              <p>A finished home, walked through room by room, with support in place for whatever needs adjusting after.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="experience-section" id="experience">
+        <div className="wrap">
+          <div className="exp-box">
+            <div>
+              <span className="eyebrow">A real differentiator</span>
+              <h2>Walk through materials before they&apos;re in your home</h2>
+              <p>
+                Most Bangalore studios show you a render. The Experience Center in Jakkur lets
+                you handle finishes, sit in the furniture, and see color and light decisions in
+                person — and Virtual Tours bring finished projects to you wherever you are.
+              </p>
+              <div className="exp-actions">
+                <a className="btn btn-solid" href="/contact">Book an Experience Center visit</a>
+              </div>
+            </div>
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={flagshipProject.heroImage}
+                alt="A material and furniture detail from a completed Allure Studio project"
+                style={{ width: "100%", borderRadius: 4, boxShadow: "var(--shadow)", aspectRatio: "4/3", objectFit: "cover" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq-section" id="faq">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Before you ask</span>
+              <h2>Frequently asked</h2>
+            </div>
+          </div>
+          <FaqAccordion items={faqs} />
+        </div>
+      </section>
+
+      <section className="localities-section">
+        <div className="wrap">
+          <span className="eyebrow">Serving all of Bangalore</span>
+          <h2 style={{ marginTop: 12, fontSize: "clamp(1.4rem,3vw,1.9rem)" }}>
+            Wherever in the city you&apos;re building
+          </h2>
+          <LocalityChips localities={localities} />
+        </div>
+      </section>
+
+      <section id="contact" style={{ padding: "30px 0 110px" }}>
+        <div className="wrap" style={{ textAlign: "center" }}>
+          <span className="eyebrow">Start here</span>
+          <h2 style={{ marginTop: 14, fontSize: "clamp(1.7rem,3.6vw,2.4rem)" }}>
+            Book your first consultation
+          </h2>
+          <p style={{ marginTop: 16, color: "var(--ink-muted)", maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>
+            No obligation, no hard pitch — just an honest read on scope, timeline and budget for
+            your space.
+          </p>
+          <div style={{ marginTop: 28, display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <a className="btn btn-solid" href="tel:+919187206290">Call +91 91872 06290</a>
+            <a className="btn btn-ghost" href="mailto:hello@theallurestudio.com">hello@theallurestudio.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
