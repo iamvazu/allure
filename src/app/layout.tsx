@@ -3,6 +3,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { brand } from "@/lib/data";
+import { Analytics } from "@vercel/analytics/next";
 
 // Loaded via a <link> tag below rather than next/font/google: keeps the
 // production build working in network-restricted CI/build environments,
@@ -64,6 +65,7 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

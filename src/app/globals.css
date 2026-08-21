@@ -248,6 +248,51 @@ section { position: relative; z-index: 10; background: var(--bg); }
 .process-step h3 { font-size: 1.15rem; margin-top: 10px; }
 .process-step p { margin-top: 10px; color: var(--ink-muted); font-size: 0.92rem; line-height: 1.55; }
 
+/* Smaller variant of .manifesto for interior page intros (Process, etc.) --
+   same asymmetric split, less runway than the homepage hero-follow block. */
+.manifesto.manifesto-compact { padding: clamp(56px, 8vh, 96px) 0 clamp(48px, 7vh, 84px); }
+.manifesto-compact .manifesto-mark { font-size: clamp(7rem, 16vw, 13rem); top: clamp(-24px, -3vw, 0px); }
+.manifesto-compact .manifesto-main h2 { text-align: left; margin: 0; max-width: 17ch; font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.1; letter-spacing: -0.01em; }
+.manifesto-compact .manifesto-main h2 em { font-style: italic; color: var(--terracotta); }
+
+/* PROCESS INDEX — the full four-stage breakdown on the Process page. Same
+   numeral+rule language as the services index, but each row carries a
+   duration tag and a short list of what that stage actually delivers. */
+.process-index { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; border-top: 1px solid var(--border); }
+.process-row { display: grid; grid-template-columns: clamp(52px, 6vw, 84px) 1fr; column-gap: clamp(16px, 3vw, 40px); padding: clamp(28px, 4vw, 44px) clamp(4px, 1vw, 10px); border-bottom: 1px solid var(--border); }
+.process-row-num { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1; color: color-mix(in srgb, var(--terracotta) 32%, transparent); font-variant-numeric: tabular-nums; }
+.process-row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.process-row-title { font-size: clamp(1.3rem, 2.3vw, 1.7rem); }
+.process-row-duration { font-family: var(--font-body); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); border: 1px solid var(--border); border-radius: 999px; padding: 5px 13px; white-space: nowrap; }
+.process-row-text { margin-top: 14px; color: var(--ink-muted); font-size: 0.98rem; line-height: 1.65; max-width: 62ch; }
+.process-row-points { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; padding: 0; }
+.process-row-points li { font-size: 0.76rem; color: var(--ink-muted); background: var(--surface-2); border-radius: 999px; padding: 6px 13px; }
+
+/* DIFFERENTIATORS — a plain two-column editorial list, no cards/icons. */
+.differentiators-section { padding: 20px 0 100px; }
+.differentiators-grid { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); }
+@media (min-width: 760px) { .differentiators-grid { grid-template-columns: 1fr 1fr; } }
+.differentiator { padding: clamp(26px, 3.6vw, 38px) clamp(4px, 1vw, 10px); border-bottom: 1px solid var(--border); }
+@media (min-width: 760px) {
+  .differentiator:nth-child(odd) { border-right: 1px solid var(--border); padding-right: clamp(24px, 3vw, 40px); }
+  .differentiator:nth-child(even) { padding-left: clamp(24px, 3vw, 40px); }
+}
+.differentiator h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
+.differentiator p { margin-top: 12px; color: var(--ink-muted); font-size: 0.95rem; line-height: 1.65; max-width: 46ch; }
+
+/* EDIT INDEX — the four packages, in the same index-row language. */
+.edit-section { padding: 20px 0 100px; }
+.edit-index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.edit-row { display: grid; grid-template-columns: clamp(52px, 6vw, 84px) 1fr; row-gap: 8px; column-gap: clamp(16px, 3vw, 40px); padding: clamp(22px, 3.4vw, 32px) clamp(4px, 1vw, 10px); border-bottom: 1px solid var(--border); align-items: baseline; }
+.edit-row-num { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 2.8vw, 2.1rem); color: color-mix(in srgb, var(--terracotta) 30%, transparent); font-variant-numeric: tabular-nums; }
+.edit-row-name { grid-column: 2; font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem); }
+.edit-row-desc { grid-column: 2; color: var(--ink-muted); font-size: 0.92rem; line-height: 1.55; }
+@media (min-width: 700px) {
+  .edit-row { grid-template-columns: clamp(60px, 6vw, 84px) 1fr 1.1fr; align-items: center; }
+  .edit-row-name, .edit-row-desc { grid-column: auto; }
+  .edit-row-desc { text-align: right; }
+}
+
 .experience-section { padding: 20px 0 100px; }
 .exp-box { background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: clamp(30px, 5vw, 56px); display: grid; grid-template-columns: 1fr; gap: 30px; }
 @media (min-width: 760px) { .exp-box { grid-template-columns: 1fr 1fr; align-items: center; } }
