@@ -16,6 +16,7 @@ const steps = [
     title: "Initial Consultation",
     text: "A designer walks the space with you, or reviews your floor plan, and listens to how you actually live in it before talking through budget range and style direction — no hard sales pitch, no generic mood board.",
     points: ["On-site or floor-plan review", "Honest budget bracket", "A real timeline, not a guess"],
+    img: "/images/process/stage-01-consultation.jpg",
   },
   {
     n: "02",
@@ -23,6 +24,7 @@ const steps = [
     title: "Design & Planning",
     text: "Layout, lighting, materials and furniture are resolved room by room — on paper, in detail — before a single cabinet is ordered or a wall is touched. This is the stage most Bangalore interior projects rush, and where a design starts either holding up for a decade or not.",
     points: ["Space planning & layout", "Lighting & material palette", "Furniture & modular drawings"],
+    img: "/images/process/stage-02-planning.jpg",
   },
   {
     n: "03",
@@ -30,6 +32,7 @@ const steps = [
     title: "Production & Implementation",
     text: "Modular systems, custom furniture and finishes are produced and installed under one project manager who coordinates every trade — civil, electrical, modular, soft furnishing — so nothing stalls waiting on a handoff between vendors.",
     points: ["In-house modular production", "One project manager, one number to call", "Weekly site updates"],
+    img: "/images/process/stage-03-production.jpg",
   },
   {
     n: "04",
@@ -37,6 +40,7 @@ const steps = [
     title: "Project Handover",
     text: "A finished home, walked through room by room against the original design, with support in place for whatever needs adjusting once you're actually living in it — not just on the day the photographs are taken.",
     points: ["Room-by-room walkthrough", "Snag list closed before keys change hands", "Post-handover support window"],
+    img: "/images/process/stage-04-handover.jpg",
   },
 ];
 
@@ -102,6 +106,7 @@ export default function ProcessPage() {
             kitchens, wardrobes, civil work and every material decision handled under one roof,
             not passed between five vendors across the city.
           </p>
+          <img src="/images/process/hero.jpg" alt="Interior Design Process" style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
         </div>
       </section>
 
@@ -152,6 +157,7 @@ export default function ProcessPage() {
                       <li key={p}>{p}</li>
                     ))}
                   </ul>
+                  {s.img && <img src={s.img} alt={s.title} style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} />}
                 </div>
               </li>
             ))}
@@ -192,6 +198,7 @@ export default function ProcessPage() {
                 <span className="edit-row-num">{String(i + 1).padStart(2, "0")}</span>
                 <span className="edit-row-name">{e.name}</span>
                 <span className="edit-row-desc">{e.desc}</span>
+                {e.img && <img src={e.img} alt={e.name} style={{ width: "100%", height: "auto", marginTop: 24, borderRadius: 4 }} />}
               </li>
             ))}
           </ul>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, localities, brand } from "@/lib/data";
+import fs from "fs";
+import path from "path";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -22,6 +24,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const index = services.findIndex((s) => s.slug === slug);
   const service = services[index];
   if (!service) notFound();
+
+  const imagePath = `/images/services/${slug}.jpg`;
+  const hasImage = fs.existsSync(path.join(process.cwd(), "public", imagePath));
 
   const schema = {
     "@context": "https://schema.org",
@@ -52,7 +57,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {p}
               </p>
             ))}
-            <div style={{ marginTop: 8 }}>
+            {hasImage && (
+              <img 
+                src={imagePath} 
+                alt={service.name} 
+                style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} 
+              />
+            )}
+            <div style={{ marginTop: 32 }}>
               <Link className="btn btn-solid" href="/contact">
                 Book a Consultation
               </Link>

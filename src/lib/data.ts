@@ -340,8 +340,8 @@ export const faqs: { q: string; a: string }[] = [
 ];
 
 export const editPackages = [
-  { name: "The Modular Edit", desc: "Kitchen and wardrobe systems, designed and installed." },
-  { name: "The Styling Edit", desc: "Furniture, art and finishing touches for a space that just needs a design pass." },
-  { name: "The Signature Edit", desc: "Full room-by-room design and build." },
-  { name: "The Complete Edit", desc: "The whole home, start to finish." },
+  { name: "The Modular Edit", desc: "Kitchen and wardrobe systems, designed and installed.", img: "/images/process/edit-modular.jpg" },
+  { name: "The Styling Edit", desc: "Furniture, art and finishing touches for a space that just needs a design pass.", img: "/images/process/edit-styling.jpg" },
+  { name: "The Signature Edit", desc: "Full room-by-room design and build.", img: "/images/process/edit-signature.jpg" },
+  { name: "The Complete Edit", desc: "The whole home, start to finish.", img: "/images/process/edit-complete.jpg" },
 ];
