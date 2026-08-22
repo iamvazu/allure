@@ -10,9 +10,17 @@
   --surface-2: #F1E9DE;
   --ink: #2A2019;
   --ink-muted: #6E5D4E;
-  --terracotta: #B4592F;
-  --terracotta-soft: #D98A5E;
-  --gold: #A9812F;
+  /* Sampled from the actual logo (public/images/brand/logo.png), which is
+     a warm gold gradient from #D1992A to #FFC800 — hue ~40°. The old
+     --terracotta (#B4592F, hue ~19°) was a red-orange that didn't match
+     the logo at all; these are the same gold hue as the mark, just
+     darkened/lightened per-use for legibility. --terracotta/-soft now
+     drive buttons + interactive accents; --gold drives eyebrow labels
+     and footer headings. Variable names kept as-is to avoid touching
+     every call site — only the values changed. */
+  --terracotta: #906A1D;
+  --terracotta-soft: #E0AA3E;
+  --gold: #A3771F;
   --border: #E5D8C6;
   --shadow: 0 20px 60px -30px rgba(42, 32, 25, 0.35);
   /* Newsreader + Archivo, replacing Bodoni Moda + Manrope: that pairing
@@ -34,9 +42,9 @@
     --surface-2: #241D16;
     --ink: #F3EAE0;
     --ink-muted: #C2AF9C;
-    --terracotta: #E38B5C;
-    --terracotta-soft: #E38B5C;
-    --gold: #D9B563;
+    --terracotta: #E2B55A;
+    --terracotta-soft: #E2B55A;
+    --gold: #E2BF78;
     --border: #382C21;
     --shadow: 0 20px 60px -25px rgba(0, 0, 0, 0.6);
   }
@@ -47,9 +55,9 @@
   --surface-2: #241D16;
   --ink: #F3EAE0;
   --ink-muted: #C2AF9C;
-  --terracotta: #E38B5C;
-  --terracotta-soft: #E38B5C;
-  --gold: #D9B563;
+  --terracotta: #E2B55A;
+  --terracotta-soft: #E2B55A;
+  --gold: #E2BF78;
   --border: #382C21;
   --shadow: 0 20px 60px -25px rgba(0, 0, 0, 0.6);
 }
@@ -120,7 +128,7 @@ a { color: inherit; }
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-solid { background: var(--terracotta); color: #FFF9F3; }
-.btn-solid:hover { background: var(--gold); }
+.btn-solid:hover { background: var(--terracotta-soft); }
 .btn-ghost { background: transparent; border-color: currentColor; color: inherit; }
 .btn-ghost:hover { border-color: var(--terracotta); color: var(--terracotta); }
 
