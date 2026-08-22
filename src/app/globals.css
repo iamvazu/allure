@@ -2,7 +2,11 @@
 
 :root {
   --bg: #FAF6F0;
-  --surface: #FFFFFF;
+  /* Was pure #FFFFFF — next to a warm cream page, true white reads as a
+     cold, faintly grey "SaaS card" rather than part of the same warm
+     palette. This is the same hue family as --bg, just a touch lighter,
+     so a card still separates from the page without going cold. */
+  --surface: #FDF7EC;
   --surface-2: #F1E9DE;
   --ink: #2A2019;
   --ink-muted: #6E5D4E;
@@ -11,8 +15,16 @@
   --gold: #A9812F;
   --border: #E5D8C6;
   --shadow: 0 20px 60px -30px rgba(42, 32, 25, 0.35);
-  --font-display: "Bodoni Moda", Didot, "Times New Roman", serif;
-  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Newsreader + Archivo, replacing Bodoni Moda + Manrope: that pairing
+     (a high-contrast Didone serif headline over a neutral grotesk body,
+     on a cream-and-terracotta palette) is the single most common "elegant
+     AI-generated site" formula right now — regardless of which specific
+     serif/sans you pick within it, the formula itself reads as templated.
+     Newsreader is a literary text serif with real, slightly idiosyncratic
+     character rather than a luxury-editorial cliché; Archivo has more
+     structural, architectural personality than a default neutral grotesk. */
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
