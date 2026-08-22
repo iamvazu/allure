@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { localities, services, projects, brand } from "@/lib/data";
 import FaqAccordion from "@/components/FaqAccordion";
+import fs from "fs";
+import path from "path";
 
 export function generateStaticParams() {
   return localities.map((l) => ({ locality: l.slug }));
@@ -23,6 +25,9 @@ export default async function LocalityPage({ params }: { params: Promise<{ local
   const locality = localities.find((l) => l.slug === localitySlug);
   if (!locality) notFound();
 
+  const imagePath = `/images/localities/${locality.slug}.jpg`;
+  const hasImage = fs.existsSync(path.join(process.cwd(), "public", imagePath));
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
@@ -34,17 +39,19 @@ export default async function LocalityPage({ params }: { params: Promise<{ local
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <section className="page-hero page-hero-split">
+      <section className={`page-hero ${hasImage ? "page-hero-split" : ""}`}>
         <div className="wrap">
           <div>
             <span className="eyebrow">Interior Designer · {locality.name}</span>
             <h1>Interior design in {locality.name}, Bangalore</h1>
             <p className="lede">{locality.blurb}</p>
           </div>
-          <div className="page-hero-split-photo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="editorial-photo" src={`/images/localities/${locality.slug}.jpg`} alt={`Interior design in ${locality.name}`} />
-          </div>
+          {hasImage && (
+            <div className="page-hero-split-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="editorial-photo" src={imagePath} alt={`Interior design in ${locality.name}`} />
+            </div>
+          )}
         </div>
       </section>
 

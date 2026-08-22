@@ -239,6 +239,7 @@ export type Locality = {
   slug: string;
   name: string;
   wave: 1 | 2;
+  region: "North" | "South" | "East" | "West";
   blurb: string;
   faq: { q: string; a: string }[];
 };
@@ -248,6 +249,7 @@ export const localities: Locality[] = [
     slug: "jakkur",
     name: "Jakkur",
     wave: 1,
+    region: "North",
     blurb:
       "Jakkur is home turf — the studio's Experience Center is on-site here, so Jakkur clients are the ones most likely to walk in, see real finishes in person, and start a project the same week.",
     faq: [
@@ -259,6 +261,7 @@ export const localities: Locality[] = [
     slug: "indiranagar",
     name: "Indiranagar",
     wave: 1,
+    region: "East",
     blurb:
       "Indiranagar's mix of older independent houses and newer apartment renovations calls for a studio comfortable working around existing structure — from full teardown-and-rebuild interiors to lighter cosmetic renovations.",
     faq: [
@@ -269,6 +272,7 @@ export const localities: Locality[] = [
     slug: "koramangala",
     name: "Koramangala",
     wave: 1,
+    region: "South",
     blurb:
       "Koramangala's apartment stock skews compact and space-planning-sensitive — this is exactly the kind of layout where getting furniture zones and storage right before styling begins makes the biggest visible difference.",
     faq: [
@@ -279,6 +283,7 @@ export const localities: Locality[] = [
     slug: "hsr-layout",
     name: "HSR Layout",
     wave: 1,
+    region: "South",
     blurb:
       "HSR Layout's newer independent houses and villa-style plots are well suited to the studio's full-home service — layout, modular kitchen, wardrobes and furniture designed together from the start rather than stitched together after possession.",
     faq: [
@@ -289,6 +294,7 @@ export const localities: Locality[] = [
     slug: "whitefield",
     name: "Whitefield",
     wave: 1,
+    region: "East",
     blurb:
       "Whitefield's large gated-community apartments are common ground for full-home turnkey projects — the studio's project management service is built for exactly this scale, coordinating every trade under one schedule.",
     faq: [
@@ -299,6 +305,7 @@ export const localities: Locality[] = [
     slug: "sarjapur-road",
     name: "Sarjapur Road",
     wave: 1,
+    region: "South",
     blurb:
       "The Sarjapur Road corridor's newer high-rise apartments tend to come with tighter possession timelines — the studio plans design and production in parallel wherever the schedule allows, to compress time-to-move-in.",
     faq: [
@@ -309,6 +316,7 @@ export const localities: Locality[] = [
     slug: "hebbal",
     name: "Hebbal",
     wave: 1,
+    region: "North",
     blurb:
       "Hebbal's mix of lakeside high-rises and established residential pockets means every project starts from a different set of light and view conditions — the studio's lighting and space planning services are scoped around each apartment's actual orientation.",
     faq: [
@@ -319,10 +327,209 @@ export const localities: Locality[] = [
     slug: "yelahanka",
     name: "Yelahanka",
     wave: 1,
+    region: "North",
     blurb:
       "Yelahanka's independent houses and villa plots give the studio room to apply the same design approach behind the flagship and Aangan projects — architecture-led interiors built around one clear idea per home, not a catalogue of trends.",
     faq: [
       { q: "Can you take on a full villa build interior, not just a renovation?", a: "Yes — full-home turnkey interiors for independent houses and villas are a core project type." },
+    ],
+  },
+  {
+    slug: "thanisandra",
+    name: "Thanisandra",
+    wave: 2,
+    region: "North",
+    blurb:
+      "Thanisandra sits just down the road from the studio's Jakkur base, and its wave of large gated apartment complexes is some of the most familiar housing stock the studio designs for — the same modular kitchen and wardrobe systems that work in Jakkur apply directly here.",
+    faq: [
+      { q: "You're based in Jakkur — how close is that to Thanisandra?", a: "A short drive — it's one of the areas closest to the studio, which makes site visits and Experience Center trips easy to fit in." },
+    ],
+  },
+  {
+    slug: "hennur",
+    name: "Hennur",
+    wave: 2,
+    region: "North",
+    blurb:
+      "Hennur's apartment complexes range from established mid-rise developments to newer high-rises, giving the studio a broad mix of floor plates to plan around — from compact 2BHKs to larger family layouts.",
+    faq: [
+      { q: "Do you work on both older and newer Hennur apartments?", a: "Yes — the design approach adjusts to the building's age and layout constraints either way." },
+    ],
+  },
+  {
+    slug: "rt-nagar",
+    name: "RT Nagar",
+    wave: 2,
+    region: "North",
+    blurb:
+      "RT Nagar is one of North Bangalore's more established residential pockets — a mix of older independent houses and apartment redevelopments, which is exactly the kind of renovation-and-remodeling work the studio takes on alongside new-build interiors.",
+    faq: [
+      { q: "Our RT Nagar house is older — can you renovate around the existing structure?", a: "Yes, renovation and remodeling of existing homes is a core service, not an add-on." },
+    ],
+  },
+  {
+    slug: "sahakara-nagar",
+    name: "Sahakara Nagar",
+    wave: 2,
+    region: "North",
+    blurb:
+      "Sahakara Nagar's independent houses and low-rise apartments sit close to the studio's Jakkur base, making it easy to fold in an Experience Center visit alongside your first consultation.",
+    faq: [
+      { q: "Is Sahakara Nagar close enough for an in-person Experience Center visit?", a: "Yes — it's one of the closer North Bangalore areas to the studio." },
+    ],
+  },
+  {
+    slug: "devanahalli",
+    name: "Devanahalli",
+    wave: 2,
+    region: "North",
+    blurb:
+      "Devanahalli's newer villa and plotted-development communities near the airport corridor are largely blank-slate builds — full-home turnkey interiors planned from the ground up, the same way the studio approached its own flagship project.",
+    faq: [
+      { q: "We're building a new villa in Devanahalli — can you start before the house is fully handed over?", a: "Yes, as soon as floor plans are final — starting design early keeps production moving the moment you have possession." },
+    ],
+  },
+  {
+    slug: "rajajinagar",
+    name: "Rajajinagar",
+    wave: 2,
+    region: "West",
+    blurb:
+      "Rajajinagar's established residential blocks are mostly older independent houses, many mid-renovation or due for one — the studio's renovation and remodeling service is built around exactly this kind of existing-structure work.",
+    faq: [
+      { q: "Can you take on a partial renovation, not the whole house at once?", a: "Yes — renovation scope can be limited to specific rooms or phased over time." },
+    ],
+  },
+  {
+    slug: "malleshwaram",
+    name: "Malleshwaram",
+    wave: 2,
+    region: "West",
+    blurb:
+      "Malleshwaram's older bungalows and heritage-adjacent homes call for a careful hand with existing structure — the studio treats renovation here the same way it treats a new build: layout resolved first, materials chosen to last.",
+    faq: [
+      { q: "Our Malleshwaram home has some original architectural details we want to keep — is that possible?", a: "Yes — preserving what's worth keeping while resolving the rest is a normal part of a renovation brief." },
+    ],
+  },
+  {
+    slug: "vijayanagar",
+    name: "Vijayanagar",
+    wave: 2,
+    region: "West",
+    blurb:
+      "Vijayanagar's family-oriented mix of independent houses and mid-rise apartments is well suited to the studio's full-home service — one team responsible for layout, modular kitchen, wardrobes and furniture together.",
+    faq: [
+      { q: "Do you handle both the kitchen and the rest of the home, or just one?", a: "Either — modular kitchen work stands alone, or folds into a full-home project." },
+    ],
+  },
+  {
+    slug: "yeshwanthpur",
+    name: "Yeshwanthpur",
+    wave: 2,
+    region: "West",
+    blurb:
+      "Yeshwanthpur's newer apartment developments, many aimed at first-time buyers and young families, are a natural fit for the studio's space planning service — getting a compact layout right before any styling decision is made.",
+    faq: [
+      { q: "Our Yeshwanthpur apartment is a first home and the budget is tight — can you still help?", a: "Yes — a design consultation on its own, without committing to a full project, is a normal starting point." },
+    ],
+  },
+  {
+    slug: "rr-nagar",
+    name: "RR Nagar",
+    wave: 2,
+    region: "West",
+    blurb:
+      "RR Nagar's residential layouts — a mix of independent houses and apartment complexes — are typical of the full-home turnkey projects the studio takes on across Bangalore's outer residential belts.",
+    faq: [
+      { q: "Is RR Nagar considered too far from your Jakkur base?", a: "No — the studio takes on projects across all of Bangalore; your project manager coordinates site visits regardless of distance." },
+    ],
+  },
+  {
+    slug: "marathahalli",
+    name: "Marathahalli",
+    wave: 2,
+    region: "East",
+    blurb:
+      "Marathahalli's IT-corridor apartment towers house a lot of young families and first-time owners — the studio's design consultation service is a common starting point here, an honest read on scope and budget before committing to more.",
+    faq: [
+      { q: "We just bought our first Marathahalli apartment — where do we even start?", a: "A design consultation — it's built exactly for this: an honest first read on style, budget and what's realistic before anything else." },
+    ],
+  },
+  {
+    slug: "kr-puram",
+    name: "KR Puram",
+    wave: 2,
+    region: "East",
+    blurb:
+      "KR Puram's fast-growing mix of new apartment towers and older independent plots means every project starts from a different baseline — the studio scopes each one on its own layout and construction stage, not a one-size approach.",
+    faq: [
+      { q: "Our KR Puram building is still under construction — can you start design now?", a: "Yes, as soon as floor plans are finalized by the builder." },
+    ],
+  },
+  {
+    slug: "cv-raman-nagar",
+    name: "CV Raman Nagar",
+    wave: 2,
+    region: "East",
+    blurb:
+      "CV Raman Nagar's established residential streets — a mix of independent houses and mid-rise apartments — are the kind of settled neighborhood where a considered renovation or a full-home fit-out both make sense, depending on what's already there.",
+    faq: [
+      { q: "How do you decide between a renovation and a full fit-out for an older CV Raman Nagar home?", a: "That's exactly what the first consultation resolves — walking the space and being honest about what's worth keeping." },
+    ],
+  },
+  {
+    slug: "jayanagar",
+    name: "Jayanagar",
+    wave: 2,
+    region: "South",
+    blurb:
+      "Jayanagar is one of Bangalore's oldest planned residential neighborhoods, and its independent houses and low-rise apartments often carry real architectural character worth designing around rather than over — the studio's approach leans into what a home already has.",
+    faq: [
+      { q: "Our Jayanagar house has some original period detailing — can that stay?", a: "Often, yes — the first consultation is where we work out what's worth preserving and what isn't." },
+    ],
+  },
+  {
+    slug: "jp-nagar",
+    name: "JP Nagar",
+    wave: 2,
+    region: "South",
+    blurb:
+      "JP Nagar's settled residential blocks — a mix of independent houses and apartment complexes across its several phases — are typical full-home project territory, the same scale and scope as the studio's documented projects.",
+    faq: [
+      { q: "Does it matter which JP Nagar phase we're in?", a: "No — the studio works across all of JP Nagar's phases the same way." },
+    ],
+  },
+  {
+    slug: "btm-layout",
+    name: "BTM Layout",
+    wave: 2,
+    region: "South",
+    blurb:
+      "BTM Layout's dense apartment stock skews compact, much like Koramangala and HSR Layout — space planning is usually the first and most valuable step before any material or furniture decision is made.",
+    faq: [
+      { q: "Our BTM Layout apartment is quite small — is that your kind of project?", a: "It's a very common brief in this part of the city, and space planning is exactly where the studio starts." },
+    ],
+  },
+  {
+    slug: "banashankari",
+    name: "Banashankari",
+    wave: 2,
+    region: "South",
+    blurb:
+      "Banashankari's family-oriented mix of independent houses and apartment complexes, spread across its several stages, is well suited to the studio's full-home service — one team accountable for how every room works together.",
+    faq: [
+      { q: "Do you cover all of Banashankari's stages, or only some?", a: "All of them — the studio takes on projects across every stage of Banashankari." },
+    ],
+  },
+  {
+    slug: "electronic-city",
+    name: "Electronic City",
+    wave: 2,
+    region: "South",
+    blurb:
+      "Electronic City's large gated apartment townships, home to a lot of the city's IT workforce, are common ground for the studio's project management service — one project manager coordinating every trade under a single, predictable schedule.",
+    faq: [
+      { q: "Electronic City feels far from Jakkur — does that affect service?", a: "No — distance doesn't change how a project is run; your project manager coordinates site visits and deliveries regardless of where in Bangalore you are." },
     ],
   },
 ];

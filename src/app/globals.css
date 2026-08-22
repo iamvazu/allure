@@ -518,6 +518,12 @@ section { position: relative; z-index: 10; background: var(--bg); }
 .chip { border: 1px solid var(--border); padding: 8px 16px; border-radius: 999px; font-size: 0.85rem; color: var(--ink-muted); text-decoration: none; transition: border-color .2s ease, color .2s ease; }
 .chip:hover { border-color: var(--terracotta); color: var(--terracotta); }
 
+/* Stacked per-region sections on /bangalore -- much tighter than the single
+   homepage locality band, since four of these sit back to back. */
+.locality-region { padding: 26px 0; text-align: left; }
+.locality-region .chip-row { justify-content: flex-start; }
+.locality-region + .locality-region { border-top: 1px solid var(--border); }
+
 footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
