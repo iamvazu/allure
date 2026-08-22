@@ -4,7 +4,15 @@ import ServiceGrid from "@/components/ServiceGrid";
 import PortfolioCards from "@/components/PortfolioCards";
 import FaqAccordion from "@/components/FaqAccordion";
 import LocalityChips from "@/components/LocalityChips";
+import JourneyTimeline from "@/components/JourneyTimeline";
 import { flagshipProject, projects, services, faqs, localities, aanganProject } from "@/lib/data";
+
+const journeySteps = [
+  { n: "01", title: "Initial Consultation", text: "A designer walks the space with you and scopes budget and direction honestly." },
+  { n: "02", title: "Design & Planning", text: "Layout, lighting, materials and furniture resolved in detail before anything is built." },
+  { n: "03", title: "Production & Implementation", text: "Modular systems and finishes produced and installed under one project manager." },
+  { n: "04", title: "Project Handover", text: "A finished home, walked through room by room, with support after." },
+];
 
 export default function Home() {
   return (
@@ -72,24 +80,7 @@ export default function Home() {
               See the full process
             </Link>
           </div>
-          <div className="journey">
-            <span className="journey-line" aria-hidden="true" />
-            {[
-              { n: "01", title: "Initial Consultation", text: "A designer walks the space with you and scopes budget and direction honestly." },
-              { n: "02", title: "Design & Planning", text: "Layout, lighting, materials and furniture resolved in detail before anything is built." },
-              { n: "03", title: "Production & Implementation", text: "Modular systems and finishes produced and installed under one project manager." },
-              { n: "04", title: "Project Handover", text: "A finished home, walked through room by room, with support after." },
-            ].map((s, i) => (
-              <div className={`journey-step ${i % 2 === 0 ? "is-top" : "is-bottom"}`} key={s.n}>
-                <div className="journey-card">
-                  <span className="journey-num">{s.n}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-                <span className="journey-dot" aria-hidden="true" />
-              </div>
-            ))}
-          </div>
+          <JourneyTimeline steps={journeySteps} />
         </div>
       </section>
 
