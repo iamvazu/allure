@@ -5,7 +5,12 @@ import PortfolioCards from "@/components/PortfolioCards";
 import FaqAccordion from "@/components/FaqAccordion";
 import LocalityChips from "@/components/LocalityChips";
 import JourneyTimeline from "@/components/JourneyTimeline";
-import { flagshipProject, projects, services, faqs, localities, aanganProject } from "@/lib/data";
+import DragGallery from "@/components/DragGallery";
+import StatsBand from "@/components/StatsBand";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
+import JournalSection from "@/components/JournalSection";
+import { flagshipProject, projects, services, faqs, localities, aanganProject, galleryHighlights, stats, testimonials } from "@/lib/data";
+import { journalPosts } from "@/lib/journal";
 
 const journeySteps = [
   { n: "01", title: "Initial Consultation", text: "A designer walks the space with you and scopes budget and direction honestly." },
@@ -67,6 +72,18 @@ export default function Home() {
           </div>
           <PortfolioCards projects={projects} />
         </div>
+      </section>
+
+      <section className="gallery-section">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">More from our projects</span>
+              <h2>Every room tells its own part of the story</h2>
+            </div>
+          </div>
+        </div>
+        <DragGallery items={galleryHighlights} />
       </section>
 
       <section className="journey-section" id="process">
@@ -133,6 +150,20 @@ export default function Home() {
         </div>
       </section>
 
+      <StatsBand stats={stats} />
+
+      <section className="testimonial-section">
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">In their words</span>
+              <h2>What it&apos;s like to work with us</h2>
+            </div>
+          </div>
+          <TestimonialCarousel items={testimonials} />
+        </div>
+      </section>
+
       <section className="experience-section" id="experience">
         <div className="wrap">
           <div className="exp-box">
@@ -171,6 +202,8 @@ export default function Home() {
           <FaqAccordion items={faqs} />
         </div>
       </section>
+
+      <JournalSection posts={journalPosts} />
 
       <section className="localities-section">
         <div className="wrap">

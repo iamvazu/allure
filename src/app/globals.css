@@ -536,3 +536,199 @@ footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
   .scene img { transition: none; transform: none; }
   .caption { transition: none; }
 }
+
+/* DRAG-TO-EXPLORE GALLERY — a horizontal, pointer-draggable strip of real
+   project scenes. Breaks out of the .wrap max-width so it can run edge to
+   edge, unlike every other section on the page. */
+.gallery-section { padding: 10px 0 110px; }
+.gallery-section .section-head { margin-bottom: 28px; }
+.drag-gallery { position: relative; }
+.drag-gallery-hint {
+  position: absolute; top: -46px; right: clamp(20px, 5vw, 56px);
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-muted); font-weight: 600; pointer-events: none;
+}
+.drag-gallery-hint-icon { font-size: 1rem; color: var(--terracotta); }
+.drag-gallery-track {
+  display: flex; gap: clamp(14px, 2vw, 24px); overflow-x: auto;
+  padding: 4px clamp(20px, 5vw, 56px) 18px;
+  cursor: grab; scroll-snap-type: x proximity;
+  scrollbar-width: thin; scrollbar-color: var(--terracotta-soft) transparent;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.drag-gallery-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.drag-gallery-track::-webkit-scrollbar { height: 5px; }
+.drag-gallery-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.drag-gallery-item {
+  position: relative; flex: 0 0 auto; width: clamp(230px, 30vw, 380px);
+  aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden;
+  scroll-snap-align: start; text-decoration: none; display: block;
+  box-shadow: var(--shadow);
+}
+.drag-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s ease; pointer-events: none;
+}
+.drag-gallery-item:hover img { transform: scale(1.04); }
+.drag-gallery-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 18px;
+  display: flex; flex-direction: column; gap: 3px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,7,5,0.72) 100%);
+}
+.drag-gallery-caption-title { color: #FFF9F3; font-family: var(--font-display); font-size: 1.1rem; }
+.drag-gallery-caption-project { color: #E8D9C6; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 640px) {
+  .drag-gallery-hint { top: -34px; }
+}
+
+/* STATS BAND — dark full-bleed strip. Values are intentionally em-dashes;
+   see the `stats` export in src/lib/data.ts for why. */
+.stats-band { background: var(--ink); padding: 64px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center; }
+.stat-item { display: flex; flex-direction: column; gap: 10px; }
+.stat-value { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.82rem; letter-spacing: 0.04em; color: #C7B7A4; max-width: 26ch; margin: 0 auto; }
+
+/* TESTIMONIAL — single-quote carousel, dots only appear once there's more
+   than one real testimonial in src/lib/data.ts. */
+.testimonial-section { padding: 90px 0 110px; background: var(--surface); }
+.testimonial-carousel { max-width: 780px; margin: 0 auto; text-align: center; }
+.testimonial-mark { display: block; font-family: var(--font-display); font-size: 4rem; line-height: 1; color: var(--terracotta-soft); margin-bottom: 4px; }
+.testimonial-quote { font-family: var(--font-display); font-size: clamp(1.3rem, 2.6vw, 1.7rem); line-height: 1.5; color: var(--ink); font-style: italic; }
+.testimonial-attrib { margin-top: 24px; display: flex; flex-direction: column; gap: 4px; }
+.testimonial-name { font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+.testimonial-role { font-size: 0.82rem; color: var(--ink-muted); }
+.testimonial-dots { margin-top: 28px; display: flex; justify-content: center; gap: 10px; }
+.testimonial-dot { width: 8px; height: 8px; border-radius: 999px; border: none; background: var(--border); padding: 0; cursor: pointer; }
+.testimonial-dot.is-active { background: var(--terracotta); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* NEWSLETTER FORM — shared by the footer and the homepage Journal section
+   (both dark) and the /journal index page (light). Deliberately not wired
+   to an email provider yet; see the TODO in NewsletterForm.tsx. */
+.newsletter-form { margin-top: 18px; }
+.newsletter-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.newsletter-input {
+  flex: 1; min-width: 180px; padding: 12px 14px; border-radius: 2px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink);
+  font-size: 0.88rem; font-family: var(--font-body);
+}
+.newsletter-submit {
+  display: inline-flex; align-items: center; gap: 7px; padding: 12px 20px;
+  background: var(--terracotta); color: #FFF9F3; border: none; border-radius: 2px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.25s ease; white-space: nowrap;
+}
+.newsletter-submit:hover { background: var(--terracotta-soft); }
+.newsletter-note { margin-top: 10px; font-size: 0.76rem; color: var(--ink-muted); line-height: 1.5; }
+.newsletter-note-confirm { color: var(--terracotta); }
+.newsletter-form.is-dark .newsletter-input {
+  background: rgba(255, 249, 243, 0.08); border-color: rgba(255, 249, 243, 0.22); color: #FFF9F3;
+}
+.newsletter-form.is-dark .newsletter-input::placeholder { color: rgba(255, 249, 243, 0.45); }
+.newsletter-form.is-dark .newsletter-note { color: #C7B7A4; }
+.newsletter-form.is-dark .newsletter-submit { background: var(--gold); color: #241B0E; }
+.newsletter-form.is-dark .newsletter-submit:hover { background: var(--terracotta-soft); }
+
+/* JOURNAL — homepage dark band (JournalSection), /journal index, and
+   /journal/[slug] detail. Every post is real editorial content the studio
+   itself wrote (see src/lib/journal.ts) — nothing here is a fabricated
+   client, stat, or named staff author. */
+.journal-section { background: var(--ink); color: #EFE4D6; padding: 90px 0 100px; overflow: hidden; }
+.journal-section .eyebrow { color: var(--gold); }
+.journal-section h2 { color: #FFF9F3; max-width: 620px; }
+.journal-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.journal-read-all {
+  display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #FFF9F3; text-decoration: none;
+  border-bottom: 1px solid rgba(255, 249, 243, 0.3); padding-bottom: 4px;
+  transition: border-color 0.2s ease, color 0.2s ease; white-space: nowrap;
+}
+.journal-read-all:hover { color: var(--gold); border-color: var(--gold); }
+.journal-body { display: grid; grid-template-columns: 260px 1fr; gap: clamp(24px, 4vw, 56px); align-items: start; }
+.journal-newsletter h3 { color: #FFF9F3; font-size: 1.05rem; }
+.journal-newsletter p { color: #C7B7A4; margin-top: 10px; font-size: 0.9rem; line-height: 1.55; }
+.journal-posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.journal-card { position: relative; display: block; border-radius: 4px; overflow: hidden; text-decoration: none; aspect-ratio: 16 / 11; }
+.journal-card.is-large { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+.journal-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.journal-card:hover img { transform: scale(1.04); }
+.journal-card::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 7, 5, 0.78) 100%);
+}
+.journal-card-meta {
+  position: absolute; top: 16px; left: 16px; z-index: 1; padding: 6px 12px;
+  background: rgba(10, 7, 5, 0.55); color: #F3EAE0; font-size: 0.66rem; letter-spacing: 0.08em;
+  text-transform: uppercase; border-radius: 999px;
+}
+.journal-card-title {
+  position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 1; color: #FFF9F3;
+  font-family: var(--font-display); font-size: 1.1rem; line-height: 1.3;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+.journal-card.is-large .journal-card-title { font-size: clamp(1.3rem, 2.4vw, 1.7rem); max-width: 65%; }
+.journal-foot { margin-top: 36px; display: flex; justify-content: flex-end; }
+@media (max-width: 900px) {
+  .journal-body { grid-template-columns: 1fr; }
+  .journal-posts-grid { grid-template-columns: 1fr; margin-top: 8px; }
+  .journal-card.is-large { grid-column: auto; aspect-ratio: 16 / 11; }
+  .journal-card.is-large .journal-card-title { max-width: 100%; }
+}
+
+/* /journal index page */
+.journal-index-section { padding: 20px 0 100px; }
+.journal-index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; margin-bottom: 70px; }
+.journal-index-card { display: block; text-decoration: none; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--surface); }
+.journal-index-card-photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--surface-2); }
+.journal-index-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.journal-index-card:hover .journal-index-card-photo img { transform: scale(1.04); }
+.journal-index-card-body { padding: 22px 24px 26px; }
+.journal-card-meta-light { display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); font-weight: 600; margin-bottom: 10px; }
+.journal-index-card-body h3 { font-size: 1.15rem; }
+.journal-index-card-body p { margin-top: 10px; font-size: 0.92rem; line-height: 1.55; }
+.journal-index-newsletter { max-width: 520px; margin: 0 auto; text-align: center; padding: 50px clamp(24px, 4vw, 56px); background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; }
+.journal-index-newsletter h3 { font-size: 1.2rem; }
+.journal-index-newsletter p { margin-top: 10px; color: var(--ink-muted); }
+.journal-index-newsletter .newsletter-row { justify-content: center; }
+
+/* /journal/[slug] detail page */
+.journal-post-byline { margin-top: 14px; font-size: 0.85rem; color: var(--ink-muted); }
+.journal-post-body-section { padding: 10px 0 100px; }
+.journal-post-body { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+.journal-post-body p { font-size: 1.05rem; line-height: 1.8; color: var(--ink-muted); }
+.journal-post-cta { max-width: 720px; margin: 50px auto 0; display: flex; gap: 14px; flex-wrap: wrap; padding-top: 36px; border-top: 1px solid var(--border); }
+
+/* FOOTER REDESIGN — brand + contact merged into one column, Studio and
+   Projects link columns, a newsletter box, an optional social row (only
+   renders once socialLinks in data.ts is non-empty), and a full-bleed photo
+   fading into the studio's own name set large, mirroring the reference
+   site's footer signature but with real content throughout. */
+.footer-mega { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.2fr; gap: clamp(24px, 3vw, 48px); padding: 70px 0 40px; }
+@media (max-width: 900px) { .footer-mega { grid-template-columns: 1fr 1fr; row-gap: 40px; } }
+@media (max-width: 560px) { .footer-mega { grid-template-columns: 1fr; } }
+.footer-brand-tagline { margin-top: 14px; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.footer-contact-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.footer-contact-list a { color: #D8C9B8; text-decoration: none; font-size: 0.9rem; }
+.footer-contact-list a:hover { color: var(--terracotta-soft); }
+.footer-newsletter h4 { margin-bottom: 4px; }
+.footer-social-row { display: flex; gap: 26px; flex-wrap: wrap; padding: 22px 0; border-top: 1px solid #3A2E22; }
+.footer-social-row a { color: #D8C9B8; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.07em; text-transform: uppercase; }
+.footer-social-row a:hover { color: var(--gold); }
+.footer-wordmark-band { position: relative; overflow: hidden; border-top: 1px solid #3A2E22; padding-top: 36px; }
+.footer-wordmark-photo { position: relative; height: clamp(120px, 20vw, 240px); overflow: hidden; }
+.footer-wordmark-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%) brightness(0.55); }
+.footer-wordmark-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, var(--ink) 94%); }
+.footer-wordmark {
+  display: block; text-align: center; font-family: var(--font-display); font-weight: 600;
+  color: #FFF9F3; font-size: clamp(2.4rem, 10vw, 8rem); line-height: 0.85; letter-spacing: -0.02em;
+  margin-top: clamp(-56px, -8vw, -34px); position: relative;
+}
+footer .footer-bottom { margin-top: 26px; }

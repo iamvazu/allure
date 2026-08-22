@@ -1,3 +1,11 @@
+// SOCIAL LINKS — intentionally empty. No verified Instagram / Pinterest /
+// LinkedIn / etc. handle has been provided for the studio, and a footer icon
+// row pointing at "#" or a guessed handle is worse than no row at all — it
+// either dead-links or, worse, could point at someone else's real account.
+// Add real { label, href } entries here once you have them; Footer.tsx only
+// renders the row when this array is non-empty.
+export const socialLinks: { label: string; href: string }[] = [];
+
 export const brand = {
   name: "The Allure Studio",
   tagline: "Everlasting Luxury",
@@ -344,4 +352,51 @@ export const editPackages = [
   { name: "The Styling Edit", desc: "Furniture, art and finishing touches for a space that just needs a design pass.", img: "/images/process/edit-styling.jpg" },
   { name: "The Signature Edit", desc: "Full room-by-room design and build.", img: "/images/process/edit-signature.jpg" },
   { name: "The Complete Edit", desc: "The whole home, start to finish.", img: "/images/process/edit-complete.jpg" },
+];
+
+// GALLERY HIGHLIGHTS — real scenes pulled from the two documented projects
+// (Aangan + The Signature Curve) for the homepage drag-to-explore strip.
+// Every image path and caption here already exists in aanganProject /
+// flagshipProject above; this just curates a mixed-register subset for a
+// single scrolling showcase instead of building new, unverified content.
+export type GalleryItem = { img: string; title: string; project: string; projectSlug: string };
+
+export const galleryHighlights: GalleryItem[] = [
+  { img: `/images/${aanganProject.imageDir}/project2_img3.jpg`, title: "The Aangan", project: "Aangan", projectSlug: "aangan" },
+  { img: `/images/${flagshipProject.imageDir}/img3.jpg`, title: "The Signature Curve", project: "The Signature Curve", projectSlug: "the-signature-curve" },
+  { img: `/images/${aanganProject.imageDir}/project2_img7.jpg`, title: "The Swing Alcove", project: "Aangan", projectSlug: "aangan" },
+  { img: `/images/${flagshipProject.imageDir}/img5.jpg`, title: "The Terrace", project: "The Signature Curve", projectSlug: "the-signature-curve" },
+  { img: `/images/${aanganProject.imageDir}/project2_img10.jpg`, title: "The Dining Room", project: "Aangan", projectSlug: "aangan" },
+  { img: `/images/${flagshipProject.imageDir}/img9.jpg`, title: "The Lounge Suite", project: "The Signature Curve", projectSlug: "the-signature-curve" },
+  { img: `/images/${aanganProject.imageDir}/project2_img15.jpg`, title: "The Primary Suite", project: "Aangan", projectSlug: "aangan" },
+  { img: `/images/${flagshipProject.imageDir}/img7.jpg`, title: "The Living-Dining Hall", project: "The Signature Curve", projectSlug: "the-signature-curve" },
+];
+
+// STATS — placeholder only. No verified figures (years in business, homes
+// completed, Experience Center visits) have been provided, and this site's
+// standing rule is real facts only — nothing here is a real number. Replace
+// each `value` with an actual figure before this section goes live; the
+// em-dash is deliberate so an unfilled stat reads as "not entered yet"
+// rather than as a real (fabricated) zero.
+export type Stat = { value: string; label: string };
+
+export const stats: Stat[] = [
+  { value: "—", label: "Years serving Bangalore — add real figure" },
+  { value: "—", label: "Homes completed — add real figure" },
+  { value: "—", label: "Experience Center visits — add real figure" },
+];
+
+// TESTIMONIALS — placeholder only, same reason as stats above. No real
+// client has been quoted here; replace with an actual client's words (and
+// only include a name/photo with that client's permission) before this
+// section goes live.
+export type Testimonial = { quote: string; name: string; role: string };
+
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Add a real client testimonial here — a short, specific quote about their project reads better than anything generic.",
+    name: "Client name",
+    role: "Add project / locality",
+  },
 ];
