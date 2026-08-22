@@ -107,6 +107,9 @@ export type Service = {
   name: string;
   short: string;
   description: string[];
+  // Short "[ tag ]"-style labels for the services scope list — paraphrased
+  // from this service's own description above, not new claims.
+  scope: string[];
 };
 
 export const services: Service[] = [
@@ -118,6 +121,7 @@ export const services: Service[] = [
       "This is the studio's core offering: complete residential interior design for apartments, villas and independent homes anywhere in Bangalore, covering layout, lighting, materials, furniture and finishes as one connected design decision rather than a series of separate purchases.",
       "It's the right starting point if you're renovating or fitting out a whole home and want one team accountable for how every room works together, not just how each one looks individually.",
     ],
+    scope: ["Full-Home Design", "Apartments & Villas", "Start to Handover"],
   },
   {
     slug: "space-planning",
@@ -127,6 +131,7 @@ export const services: Service[] = [
       "Before any material or furniture decision, we resolve how a space is actually going to be used — traffic flow, furniture zones, storage, natural light — so the layout is right first and the styling has something solid to sit on.",
       "Especially valuable for compact Bangalore apartment layouts, where a few centimeters of planning discipline is the difference between a room that feels cramped and one that doesn't.",
     ],
+    scope: ["Layout First", "Traffic & Zoning", "Compact Apartments"],
   },
   {
     slug: "design-consultation",
@@ -136,6 +141,7 @@ export const services: Service[] = [
       "A standalone consultation for homeowners who want expert direction — style, budget range, what's realistic for their space — before committing to a full project, or who need a second opinion on a plan already in motion.",
       "No pressure to sign up for more; some consultations are exactly what they sound like, and that's fine.",
     ],
+    scope: ["Style Direction", "Budget Bracket", "No Obligation"],
   },
   {
     slug: "lighting-design",
@@ -145,6 +151,7 @@ export const services: Service[] = [
       "Lighting is planned as its own layer of design — ambient, task and accent — rather than an afterthought once the furniture's in place, which is where most homes lose the atmosphere their materials and layout otherwise earn.",
       "Every project on this site, from the flagship's sculptural chandeliers to Aangan's cane pendant fixtures, was lit this way from the start.",
     ],
+    scope: ["Ambient Layer", "Task Layer", "Accent Layer"],
   },
   {
     slug: "custom-furniture-design",
@@ -154,6 +161,7 @@ export const services: Service[] = [
       "When off-the-shelf furniture doesn't fit a space, a proportion, or a material story, we design and produce custom pieces — from a single statement item to a full room's furniture — built to the exact dimensions and finish the design calls for.",
       "Every custom piece is specified with real materials and a real fabrication partner, not left as a render.",
     ],
+    scope: ["Built to Fit", "Real Materials", "Real Fabrication Partner"],
   },
   {
     slug: "art-and-accessory-procurement",
@@ -163,6 +171,7 @@ export const services: Service[] = [
       "Art, objects, textiles and accessories sourced specifically for a project — not a generic finishing package, but pieces chosen for the actual room they'll sit in.",
       "This is usually the last stage of a project and the one clients notice the most once it's done.",
     ],
+    scope: ["Art Sourcing", "Textiles & Objects", "The Finishing 10%"],
   },
   {
     slug: "color-consultation",
@@ -172,6 +181,7 @@ export const services: Service[] = [
       "Color palettes developed against your home's actual light — orientation, window size, time-of-day use — rather than picked from a swatch under showroom lighting and hoped for the best.",
       "Works as a standalone service for a repaint or refresh, or folded into a full project.",
     ],
+    scope: ["Light-Led Palette", "Orientation Study", "Repaint or Refresh"],
   },
   {
     slug: "renovation-and-remodeling",
@@ -181,6 +191,7 @@ export const services: Service[] = [
       "Structural and cosmetic renovation for existing Bangalore homes — reworking layouts, updating finishes, modernizing older apartments and independent houses — managed with the same design discipline as a new-build project.",
       "Includes coordination with structural and MEP contractors where the renovation needs it.",
     ],
+    scope: ["Structural & Cosmetic", "Older Homes", "MEP Coordination"],
   },
   {
     slug: "project-management",
@@ -190,6 +201,7 @@ export const services: Service[] = [
       "A single project manager coordinates every trade and vendor — carpentry, modular production, electrical, painting, installation — so you're not the one chasing five different contractors to stay on schedule.",
       "This is what turns a design into a finished home on a predictable timeline.",
     ],
+    scope: ["One Project Manager", "Every Trade Coordinated", "Predictable Timeline"],
   },
   {
     slug: "styling-and-staging",
@@ -199,6 +211,7 @@ export const services: Service[] = [
       "For homes that don't need construction work — just furniture, art, textiles and layout resolved by a professional eye. Also used to stage a property for sale or rental at a higher price point.",
       "The fastest of the studio's services to deliver, typically weeks rather than months.",
     ],
+    scope: ["Furniture & Art", "No Construction Needed", "Fastest to Deliver"],
   },
   {
     slug: "wardrobe-design",
@@ -208,6 +221,7 @@ export const services: Service[] = [
       "Custom wardrobe systems designed around your actual wardrobe — proportions, hanging-to-shelf ratios, finish — rather than a standard modular configuration that leaves half the space unused.",
       "One of the studio's most-requested standalone services, and part of every full-home project.",
     ],
+    scope: ["Custom Systems", "Built Around You", "Hanging-to-Shelf Ratio"],
   },
   {
     slug: "modular-kitchen",
@@ -217,6 +231,7 @@ export const services: Service[] = [
       "Modular kitchen design and installation planned around your actual cooking habits and kitchen work-triangle, not a showroom configuration adapted after the fact to fit your space.",
       "Ask your designer about current warranty and after-installation support terms for modular work.",
     ],
+    scope: ["Work-Triangle Planning", "Cooking-Habit Led", "Warranty Support"],
   },
 ];
 

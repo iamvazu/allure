@@ -105,45 +105,68 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <div>
-              <span className="eyebrow">Why us</span>
+              <span className="eyebrow">[ How we work ]</span>
               <h2>Why Bangalore families choose us</h2>
             </div>
           </div>
-          <div className="why-list">
+          <div className="why-timeline">
             {[
               {
                 n: "01",
+                bracket: "Process",
                 title: "Transparent",
                 highlight: "Process",
                 text: "Every stage of your project is handled in the open — from the first consultation to material selection and final handover, you get a real timeline and cost bracket in writing before any design fee is on the table.",
+                tags: ["Written timeline", "Real cost bracket", "No hidden fees"],
+                img: "/images/process/stage-01-consultation.jpg",
               },
               {
                 n: "02",
+                bracket: "People",
                 title: "Dedicated",
                 highlight: "Supervision",
                 text: "One project manager, named at kickoff, coordinates every trade on your project — civil, electrical, modular, soft furnishing — so you're never chasing five different people to find out what's happening on-site.",
+                tags: ["One project manager", "Every trade coordinated", "Single point of contact"],
+                img: "/images/process/stage-03-production.jpg",
               },
               {
                 n: "03",
+                bracket: "Materials",
                 title: "Assured",
                 highlight: "Quality",
                 text: "Real finishes and materials, not renderings. The studio's Experience Center in Jakkur lets you handle the actual stone, wood and fabric that will go into your home before you commit to anything.",
+                tags: ["Real materials, not renders", "Experience Center walkthroughs", "Handle it before you commit"],
+                img: "/images/about/experience-center.jpg",
               },
               {
                 n: "04",
+                bracket: "Longevity",
                 title: "Enduring",
                 highlight: "Design",
                 text: "Layout resolved before styling begins, materials chosen to age well — homes built to still feel considered in ten years, not just on the day the photographs are taken.",
+                tags: ["Layout resolved first", "Materials chosen to age well", "Built beyond handover day"],
+                img: "/images/flagship/img3.jpg",
               },
             ].map((w) => (
-              <div className="why-row" key={w.n}>
-                <div className="why-row-body">
+              <div className="why-row-new" key={w.n}>
+                <span className="why-node" aria-hidden="true" />
+                <div className="why-row-content">
+                  <span className="why-row-bracket">[ {w.bracket} ]</span>
+                  <span className="why-row-super" aria-hidden="true">/{w.n}</span>
                   <h3 className="why-row-title">
                     {w.title} <span className="hl">{w.highlight}</span>.
                   </h3>
                   <p className="why-row-text">{w.text}</p>
+                  <ul className="why-tags">
+                    {w.tags.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
                 </div>
-                <span className="why-row-num" aria-hidden="true">{w.n}</span>
+                <div className="why-row-photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={w.img} alt={`${w.title} ${w.highlight}`} />
+                </div>
               </div>
             ))}
           </div>

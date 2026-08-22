@@ -234,41 +234,50 @@ section { position: relative; z-index: 10; background: var(--bg); }
   .manifesto-aside { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
 }
 
-.services-section { padding: 20px 0 110px; }
-/* An editorial index list rather than a card grid -- full-width rows, a
-   large pale numeral, name set in the display face, the one-liner trailing
-   off to the right, and a hairline rule between each. */
-.service-index { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
-.service-row { border-bottom: 1px solid var(--border); }
-.service-row-link {
-  display: grid; grid-template-columns: clamp(52px, 6vw, 84px) 1fr auto;
-  align-items: center; column-gap: clamp(16px, 3vw, 40px);
-  padding: clamp(20px, 3.4vw, 34px) clamp(4px, 1vw, 10px);
-  text-decoration: none; color: inherit; position: relative; overflow: hidden;
-  transition: padding-left .35s cubic-bezier(.2,.7,.3,1);
+.services-section { background: var(--ink); color: #EFE4D6; padding: 90px 0 110px; }
+.services-section .eyebrow { color: var(--gold); }
+.services-section .section-head h2 { color: #FFF9F3; }
+.services-section .lede { color: #C7B7A4; }
+
+/* SERVICES SCOPE LIST — dark stacked rows: bracketed scope tags on the
+   left, a photo (or a faint numeral where no photo has been generated
+   yet), and the service name/description/link on the right. Same three-
+   column device as the reference "[SCOPE]" section, applied to every real
+   service instead of a handful of placeholder categories. */
+.service-scope-list { border-top: 1px solid #3A2E22; }
+.service-scope-row {
+  display: grid; grid-template-columns: 170px 1fr 1.3fr; gap: clamp(20px, 3vw, 48px);
+  align-items: center; padding: clamp(36px, 5vw, 56px) 0; border-bottom: 1px solid #3A2E22;
 }
-.service-row-link::before {
-  content: ""; position: absolute; inset: 0; background: var(--surface-2);
-  transform: translateX(-101%); transition: transform .35s cubic-bezier(.2,.7,.3,1); z-index: 0;
+.service-scope-tags-label { display: block; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8A7864; margin-bottom: 14px; }
+.service-scope-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.service-scope-tags li { font-size: 0.82rem; color: #D8C9B8; }
+.service-scope-tags li::before { content: "[ "; color: #6B5B4A; }
+.service-scope-tags li::after { content: " ]"; color: #6B5B4A; }
+.service-scope-photo { aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; background: var(--surface-2); }
+.service-scope-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.service-scope-photo.is-empty {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #241D16, #1A140F);
 }
-.service-row-link:hover::before, .service-row-link:focus-visible::before { transform: translateX(0); }
-.service-row-link:hover { padding-left: clamp(20px, 3vw, 34px); }
-.service-row-num, .service-row-name, .service-row-short, .service-row-arrow { position: relative; z-index: 1; }
-.service-row-num {
-  font-family: var(--font-display); font-weight: 500; font-size: clamp(1.6rem, 3.2vw, 2.3rem);
-  line-height: 1; color: color-mix(in srgb, var(--terracotta) 30%, transparent);
-  transition: color .3s ease; font-variant-numeric: tabular-nums;
+.service-scope-photo.is-empty span {
+  font-family: var(--font-display); font-weight: 500; font-size: 2.6rem;
+  color: transparent; -webkit-text-stroke: 1.5px #3A2E22;
 }
-.service-row-link:hover .service-row-num { color: var(--terracotta); }
-.service-row-name { font-family: var(--font-display); font-size: clamp(1.2rem, 2.2vw, 1.65rem); font-weight: 500; transition: transform .35s cubic-bezier(.2,.7,.3,1); }
-.service-row-link:hover .service-row-name { transform: translateX(6px); }
-.service-row-short { display: none; color: var(--ink-muted); font-size: 0.92rem; max-width: 30ch; text-align: right; line-height: 1.5; }
-.service-row-arrow { display: none; font-family: var(--font-display); font-size: 1.3rem; color: var(--terracotta); opacity: 0; transform: translateX(-8px); transition: opacity .3s ease, transform .3s ease; }
-.service-row-link:hover .service-row-arrow { opacity: 1; transform: translateX(0); }
-@media (min-width: 700px) {
-  .service-row-link { grid-template-columns: clamp(60px, 6vw, 84px) 1fr auto auto; }
-  .service-row-short { display: block; }
-  .service-row-arrow { display: block; }
+.service-scope-body .eyebrow { color: var(--gold); }
+.service-scope-body h3 { color: #FFF9F3; font-size: clamp(1.35rem, 2.4vw, 1.8rem); margin-top: 10px; }
+.service-scope-body p { color: #C7B7A4; margin-top: 14px; line-height: 1.7; max-width: 54ch; }
+.service-scope-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid #3A2E22; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #FFF9F3; text-decoration: none; transition: color .2s ease;
+}
+.service-scope-link:hover { color: var(--gold); }
+@media (max-width: 860px) {
+  .service-scope-row { grid-template-columns: 1fr; }
+  .service-scope-tags-col { order: 2; }
+  .service-scope-photo { order: 1; aspect-ratio: 16 / 10; }
+  .service-scope-body { order: 3; }
 }
 
 .portfolio-section { padding: 20px 0 100px; }
@@ -425,21 +434,41 @@ section { position: relative; z-index: 10; background: var(--bg); }
   .journey-line-ink, .journey-card, .journey-dot { transition: none !important; }
 }
 
-/* WHY US — "why families choose us" bank: a bold display-serif claim on the
-   left, a huge pale-terracotta numeral on the right, hairline dividers
-   between rows. Same bones as the reference layout the client sent, redrawn
-   in the site's own type and color system rather than a generic sans-serif
-   black-and-white treatment. */
-.why-section { padding: 20px 0 130px; }
-.why-list { margin-top: 8px; border-top: 1px solid var(--border); }
-.why-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: clamp(16px, 4vw, 56px); padding: clamp(32px, 5vw, 50px) 0; border-bottom: 1px solid var(--border); }
-.why-row-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.5rem, 3.2vw, 2.15rem); color: var(--ink); line-height: 1.2; }
-.why-row-title .hl { display: inline-block; padding: 0 10px; margin: 0 1px; border-radius: 2px; background: color-mix(in srgb, var(--terracotta) 16%, transparent); font-style: italic; }
-.why-row-text { margin-top: 14px; max-width: 62ch; color: var(--ink-muted); line-height: 1.75; font-size: 1rem; }
-.why-row-num { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1; color: color-mix(in srgb, var(--terracotta) 30%, transparent); font-variant-numeric: tabular-nums; white-space: nowrap; }
-@media (max-width: 640px) {
-  .why-row { grid-template-columns: 1fr; gap: 10px; }
-  .why-row-num { order: -1; font-size: 2.4rem; }
+/* WHY US — dark vertical timeline: a connecting line down the left with a
+   node per reason, a bracketed category label, a big outlined numeral, the
+   existing display-serif claim, and a checkmark tag row, paired with a real
+   project/process photo. Same device the reference "How We Work" section
+   uses (line + node + outlined numeral + tags), applied to the site's own
+   four reasons rather than a chronological build timeline. */
+.why-section { background: var(--ink); color: #EFE4D6; padding: 90px 0 110px; }
+.why-section .eyebrow { color: var(--gold); }
+.why-section .section-head h2 { color: #FFF9F3; }
+.why-timeline { position: relative; margin-top: 12px; }
+.why-timeline::before { content: ""; position: absolute; left: 6px; top: 14px; bottom: 14px; width: 1px; background: #3A2E22; }
+.why-row-new {
+  position: relative; display: grid; grid-template-columns: 32px 1fr 1fr;
+  gap: clamp(20px, 3vw, 48px); align-items: center; padding: clamp(38px, 5vw, 58px) 0;
+  border-bottom: 1px solid #3A2E22;
+}
+.why-row-new:first-child { padding-top: 6px; }
+.why-node { width: 13px; height: 13px; background: var(--gold); margin-top: 8px; position: relative; z-index: 1; }
+.why-row-bracket { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8A7864; }
+.why-row-super {
+  display: block; font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1; margin: 6px 0 16px;
+  color: transparent; -webkit-text-stroke: 1.5px #4A3B2C;
+}
+.why-row-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.35rem, 2.6vw, 1.9rem); color: #FFF9F3; line-height: 1.2; }
+.why-row-title .hl { display: inline-block; padding: 0 10px; margin: 0 1px; border-radius: 2px; background: color-mix(in srgb, var(--gold) 22%, transparent); color: #FFF9F3; font-style: italic; }
+.why-row-text { margin-top: 14px; max-width: 52ch; color: #C7B7A4; line-height: 1.75; font-size: 0.98rem; }
+.why-tags { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.why-tags li { font-size: 0.82rem; color: #EFE4D6; display: flex; align-items: center; gap: 7px; }
+.why-tags li::before { content: "✓"; color: var(--gold); font-weight: 700; }
+.why-row-photo { aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; }
+.why-row-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 860px) {
+  .why-row-new { grid-template-columns: 24px 1fr; }
+  .why-row-photo { grid-column: 1 / -1; order: 3; margin-top: 6px; aspect-ratio: 16 / 10; }
 }
 
 /* SERVICE DETAIL — reuses .manifesto's asymmetric split for the per-service
