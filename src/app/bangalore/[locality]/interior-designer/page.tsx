@@ -34,12 +34,17 @@ export default async function LocalityPage({ params }: { params: Promise<{ local
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <section className="page-hero">
+      <section className="page-hero page-hero-split">
         <div className="wrap">
-          <span className="eyebrow">Interior Designer · {locality.name}</span>
-          <h1>Interior design in {locality.name}, Bangalore</h1>
-          <p className="lede">{locality.blurb}</p>
-          <img src={`/images/localities/${locality.slug}.jpg`} alt={`Interior design in ${locality.name}`} style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
+          <div>
+            <span className="eyebrow">Interior Designer · {locality.name}</span>
+            <h1>Interior design in {locality.name}, Bangalore</h1>
+            <p className="lede">{locality.blurb}</p>
+          </div>
+          <div className="page-hero-split-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="editorial-photo" src={`/images/localities/${locality.slug}.jpg`} alt={`Interior design in ${locality.name}`} />
+          </div>
         </div>
       </section>
 

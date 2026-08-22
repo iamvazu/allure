@@ -106,7 +106,10 @@ export default function ProcessPage() {
             kitchens, wardrobes, civil work and every material decision handled under one roof,
             not passed between five vendors across the city.
           </p>
-          <img src="/images/process/hero.jpg" alt="Interior Design Process" style={{ width: "100%", height: "auto", marginTop: 48, borderRadius: 4 }} />
+          <div className="editorial-photo-frame is-wide" style={{ marginTop: 48 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="editorial-photo" src="/images/process/hero.jpg" alt="Interior Design Process" />
+          </div>
         </div>
       </section>
 
@@ -157,7 +160,12 @@ export default function ProcessPage() {
                       <li key={p}>{p}</li>
                     ))}
                   </ul>
-                  {s.img && <img src={s.img} alt={s.title} style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} />}
+                  {s.img && (
+                    <div className="editorial-photo-frame is-wide" style={{ marginTop: 32 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img className="editorial-photo" src={s.img} alt={s.title} />
+                    </div>
+                  )}
                 </div>
               </li>
             ))}
@@ -194,11 +202,18 @@ export default function ProcessPage() {
           </div>
           <ul className="edit-index">
             {editPackages.map((e, i) => (
-              <li className="edit-row" key={e.name}>
-                <span className="edit-row-num">{String(i + 1).padStart(2, "0")}</span>
-                <span className="edit-row-name">{e.name}</span>
-                <span className="edit-row-desc">{e.desc}</span>
-                {e.img && <img src={e.img} alt={e.name} style={{ width: "100%", height: "auto", marginTop: 24, borderRadius: 4 }} />}
+              <li className="edit-card" key={e.name}>
+                {e.img && (
+                  <div className="edit-card-photo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={e.img} alt={e.name} />
+                  </div>
+                )}
+                <div className="edit-card-body">
+                  <span className="edit-row-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="edit-row-name">{e.name}</span>
+                  <span className="edit-row-desc">{e.desc}</span>
+                </div>
               </li>
             ))}
           </ul>

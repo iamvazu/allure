@@ -58,11 +58,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </p>
             ))}
             {hasImage && (
-              <img 
-                src={imagePath} 
-                alt={service.name} 
-                style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} 
-              />
+              <div className="editorial-photo-frame is-wide" style={{ marginTop: 32, marginBottom: 8 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="editorial-photo" src={imagePath} alt={service.name} />
+              </div>
             )}
             <div style={{ marginTop: 32 }}>
               <Link className="btn btn-solid" href="/contact">

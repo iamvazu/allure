@@ -17,17 +17,22 @@ export default function ContactPage() {
         </div>
       </section>
       <section style={{ padding: "0 0 120px" }}>
-        <div className="wrap" style={{ maxWidth: 560 }}>
-          <div style={{ border: "1px solid var(--border)", borderRadius: 4, padding: "clamp(24px,4vw,40px)", background: "var(--surface)" }}>
-            <p style={{ color: "var(--ink-muted)", lineHeight: 1.6, marginBottom: 24 }}>
-              Call or email directly, or visit the Experience Center in Jakkur by appointment.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a className="btn btn-solid" href={brand.phoneHref}>Call {brand.phone}</a>
-              <a className="btn btn-ghost" href={`mailto:${brand.email}`}>{brand.email}</a>
+        <div className="wrap">
+          <div className="contact-split">
+            <div style={{ border: "1px solid var(--border)", borderRadius: 4, padding: "clamp(24px,4vw,40px)", background: "var(--surface)" }}>
+              <p style={{ marginBottom: 24 }}>
+                Call or email directly, or visit the Experience Center in Jakkur by appointment.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <a className="btn btn-solid" href={brand.phoneHref}>Call {brand.phone}</a>
+                <a className="btn btn-ghost" href={`mailto:${brand.email}`}>{brand.email}</a>
+              </div>
+              <p style={{ marginTop: 28, fontSize: "0.85rem" }}>{brand.address}</p>
             </div>
-            <p style={{ marginTop: 28, fontSize: "0.85rem", color: "var(--ink-muted)" }}>{brand.address}</p>
-            <img src="/images/contact/atmosphere.jpg" alt="Studio atmosphere" style={{ width: "100%", height: "auto", marginTop: 32, borderRadius: 4 }} />
+            <div className="editorial-photo-frame is-tall">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="editorial-photo" src="/images/contact/atmosphere.jpg" alt="Studio atmosphere" />
+            </div>
           </div>
         </div>
       </section>
