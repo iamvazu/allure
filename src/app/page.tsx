@@ -234,7 +234,7 @@ export default function Home() {
         </div>
       </section>
 
-      <JournalSection posts={journalPosts} />
+      <JournalSection posts={journalPosts.slice(0, 4)} />
 
       <section className="localities-section">
         <div className="wrap">
