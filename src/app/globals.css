@@ -538,6 +538,9 @@ footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
 .footer-grid a:hover { color: var(--terracotta-soft); }
 .footer-brand p { color: #B7A691; font-size: 0.9rem; margin-top: 14px; max-width: 280px; line-height: 1.55; }
 .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid #3A2E22; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.8rem; color: #9A876F; }
+.footer-legal-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.footer-legal-links a { color: #9A876F; text-decoration: none; }
+.footer-legal-links a:hover { color: var(--terracotta-soft); }
 
 /* Simple page hero (non-scroll pages) */
 .page-hero { padding: clamp(140px, 22vh, 220px) 0 clamp(50px, 8vh, 90px); }
@@ -745,6 +748,22 @@ footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
 .journal-post-body { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
 .journal-post-body p { font-size: 1.05rem; line-height: 1.8; color: var(--ink-muted); }
 .journal-post-cta { max-width: 720px; margin: 50px auto 0; display: flex; gap: 14px; flex-wrap: wrap; padding-top: 36px; border-top: 1px solid var(--border); }
+
+/* /privacy-policy and /terms-and-conditions — long-form legal prose, styled
+   to match the journal article body (same measure, same muted paragraph
+   color) with headings and lists added for section structure. */
+.legal-body-section { padding: 10px 0 100px; }
+.legal-body { max-width: 760px; margin: 0 auto; }
+.legal-updated { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 8px; }
+.legal-body h2 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 46px 0 14px; }
+.legal-body h2:first-of-type { margin-top: 30px; }
+.legal-body h3 { font-size: 1rem; margin: 26px 0 10px; color: var(--ink); }
+.legal-body p { font-size: 1rem; line-height: 1.8; color: var(--ink-muted); margin-bottom: 14px; }
+.legal-body ul, .legal-body ol { margin: 0 0 14px; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }
+.legal-body li { font-size: 1rem; line-height: 1.7; color: var(--ink-muted); }
+.legal-body a { color: var(--terracotta); text-decoration: underline; text-underline-offset: 2px; }
+.legal-body strong { color: var(--ink); }
+.legal-note { margin-top: 46px; padding: 18px 20px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface-2); font-size: 0.88rem; line-height: 1.65; color: var(--ink-muted); }
 
 /* FOOTER REDESIGN — brand + contact merged into one column, Studio and
    Projects link columns, a newsletter box, an optional social row (only

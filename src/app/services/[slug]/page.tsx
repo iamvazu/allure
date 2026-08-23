@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, localities, brand } from "@/lib/data";
+import { serviceFaqs } from "@/lib/serviceFaqs";
+import FaqAccordion from "@/components/FaqAccordion";
 import fs from "fs";
 import path from "path";
 
@@ -33,6 +35,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     .filter((p) => fs.existsSync(path.join(process.cwd(), "public", p)));
   const [heroImage, ...moreImages] = galleryPaths;
   const hasImage = Boolean(heroImage);
+  const faqs = serviceFaqs[slug] ?? [];
 
   const schema = {
     "@context": "https://schema.org",
@@ -43,9 +46,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     description: service.description.join(" "),
   };
 
+  const faqSchema =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <section className="page-hero">
         <div className="wrap">
           <span className="eyebrow">Service · Bangalore</span>
@@ -125,6 +144,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+
+      {faqs.length > 0 && (
+        <section className="faq-section">
+          <div className="wrap">
+            <div className="section-head">
+              <div>
+                <span className="eyebrow">{service.name} · FAQ</span>
+                <h2>Questions about {service.name.toLowerCase()}</h2>
+              </div>
+            </div>
+            <FaqAccordion items={faqs} />
+          </div>
+        </section>
+      )}
     </main>
   );
 }

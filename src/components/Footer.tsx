@@ -74,6 +74,10 @@ export default function Footer() {
 
       <div className="wrap footer-bottom">
         <span>&copy; {new Date().getFullYear()} {brand.name}. All rights reserved.</span>
+        <div className="footer-legal-links">
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/terms-and-conditions">Terms &amp; Conditions</Link>
+        </div>
         <span>Crafted with care in {brand.city}.</span>
       </div>
     </footer>
