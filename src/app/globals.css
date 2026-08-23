@@ -104,6 +104,11 @@ a { color: inherit; }
 .editorial-photo-frame.is-square { aspect-ratio: 1 / 1; }
 .editorial-photo-frame .editorial-photo { box-shadow: none; border-radius: 0; }
 
+/* Service detail page's optional gallery — the 2nd/3rd images below the
+   hero, when a service has them (see src/app/services/[slug]/page.tsx). */
+.service-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+@media (max-width: 560px) { .service-gallery-grid { grid-template-columns: 1fr; } }
+
 .eyebrow {
   font-size: 0.72rem;
   letter-spacing: 0.16em;

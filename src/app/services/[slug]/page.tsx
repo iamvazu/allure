@@ -25,8 +25,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const service = services[index];
   if (!service) notFound();
 
-  const imagePath = `/images/services/${slug}.jpg`;
-  const hasImage = fs.existsSync(path.join(process.cwd(), "public", imagePath));
+  // Up to 3 images per service: {slug}.jpg (hero) plus optional
+  // {slug}-2.jpg / {slug}-3.jpg (a small gallery below it). Each is checked
+  // independently so a service can have just the hero, all three, or none.
+  const galleryPaths = ["", "-2", "-3"]
+    .map((suffix) => `/images/services/${slug}${suffix}.jpg`)
+    .filter((p) => fs.existsSync(path.join(process.cwd(), "public", p)));
+  const [heroImage, ...moreImages] = galleryPaths;
+  const hasImage = Boolean(heroImage);
 
   const schema = {
     "@context": "https://schema.org",
@@ -60,7 +66,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {hasImage && (
               <div className="editorial-photo-frame is-wide" style={{ marginTop: 32, marginBottom: 8 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="editorial-photo" src={imagePath} alt={service.name} />
+                <img className="editorial-photo" src={heroImage} alt={service.name} />
+              </div>
+            )}
+            {moreImages.length > 0 && (
+              <div className="service-gallery-grid">
+                {moreImages.map((img, i) => (
+                  <div className="editorial-photo-frame is-square" key={img}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="editorial-photo" src={img} alt={`${service.name} — detail ${i + 2}`} />
+                  </div>
+                ))}
               </div>
             )}
             <div style={{ marginTop: 32 }}>
