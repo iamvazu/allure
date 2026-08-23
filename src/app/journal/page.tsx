@@ -4,9 +4,10 @@ import { journalPosts, readMinutes } from "@/lib/journal";
 import NewsletterForm from "@/components/NewsletterForm";
 
 export const metadata: Metadata = {
-  title: "The Journal",
+  title: "The Journal — Bangalore Interior Design Insights",
   description:
     "Design thinking, materials, and process notes from The Allure Studio — Bangalore interior design, explained.",
+  alternates: { canonical: "/journal" },
 };
 
 export default function JournalIndexPage() {

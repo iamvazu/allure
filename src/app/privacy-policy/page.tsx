@@ -4,6 +4,7 @@ import { brand } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How The Allure Studio collects, uses and protects information from visitors to this website and from clients of the studio.",
+  alternates: { canonical: "/privacy-policy" },
 };
 
 const LAST_UPDATED = "23 August 2026";

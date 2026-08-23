@@ -17,7 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
   return {
     title: `${service.name} in Bangalore`,
-    description: `${service.short} ${service.description[0]}`,
+    // Kept short on purpose — service.short + service.description[0] ran to
+    // ~200+ characters, well past what Google renders before truncating.
+    description: `${service.short} The Allure Studio, serving all of Bangalore.`,
+    alternates: { canonical: `/services/${slug}` },
   };
 }
 

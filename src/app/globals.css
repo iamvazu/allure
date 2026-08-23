@@ -324,17 +324,87 @@ section { position: relative; z-index: 10; background: var(--bg); }
 .process-row-points { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; padding: 0; }
 .process-row-points li { font-size: 0.76rem; color: var(--ink-muted); background: var(--surface-2); border-radius: 999px; padding: 6px 13px; }
 
-/* DIFFERENTIATORS — a plain two-column editorial list, no cards/icons. */
-.differentiators-section { padding: 20px 0 100px; }
-.differentiators-grid { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--border); }
-@media (min-width: 760px) { .differentiators-grid { grid-template-columns: 1fr 1fr; } }
-.differentiator { padding: clamp(26px, 3.6vw, 38px) clamp(4px, 1vw, 10px); border-bottom: 1px solid var(--border); }
-@media (min-width: 760px) {
-  .differentiator:nth-child(odd) { border-right: 1px solid var(--border); padding-right: clamp(24px, 3vw, 40px); }
-  .differentiator:nth-child(even) { padding-left: clamp(24px, 3vw, 40px); }
+/* DIFFERENTIATORS — dark band, same brand-dark language as .why-section
+   (home) and .services-section (services), so this reads as the same
+   studio rather than a lighter, generic "features grid" bolted onto the
+   Process page. Deliberately a different device than either of those two
+   though (not another left-line timeline, not another bracket/photo row):
+   four glass-edged panels with a ghost numeral, a gold underline that
+   draws in on scroll, and a hover lift — built with the shared .reveal
+   scroll-animation primitive (see Reveal.tsx) rather than a static grid. */
+.differentiators-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: #EFE4D6;
+  padding: 90px 0 110px;
 }
-.differentiator h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
-.differentiator p { margin-top: 12px; color: var(--ink-muted); font-size: 0.95rem; line-height: 1.65; max-width: 46ch; }
+.differentiators-section .eyebrow { color: var(--gold); }
+.differentiators-section .section-head h2 { color: #FFF9F3; }
+.differentiators-glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 640px;
+  max-height: 640px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 16%, transparent) 0%, transparent 68%);
+  pointer-events: none;
+  animation: differentiators-drift 22s ease-in-out infinite;
+}
+@keyframes differentiators-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-4%, 5%) scale(1.08); }
+}
+.differentiators-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  margin-top: clamp(28px, 4vw, 44px);
+  background: #3A2E22;
+  border: 1px solid #3A2E22;
+}
+@media (min-width: 760px) { .differentiators-grid { grid-template-columns: 1fr 1fr; } }
+.differentiator {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  padding: clamp(30px, 3.6vw, 44px) clamp(26px, 3vw, 40px);
+  transition: background .45s ease, transform .45s cubic-bezier(.16,.8,.24,1);
+}
+.differentiator:hover { background: #1D170F; transform: translateY(-4px); }
+.differentiator-num {
+  position: absolute;
+  top: -0.15em;
+  right: 18px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(4.5rem, 8vw, 6.5rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--gold) 16%, transparent);
+  user-select: none;
+  pointer-events: none;
+  transition: color .45s ease;
+}
+.differentiator:hover .differentiator-num { color: color-mix(in srgb, var(--gold) 34%, transparent); }
+.differentiator h3 { position: relative; font-size: clamp(1.15rem, 2vw, 1.4rem); color: #FFF9F3; max-width: 22ch; }
+.differentiator-line { display: block; width: 34px; height: 2px; margin: 16px 0 16px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .6s ease .25s; }
+.reveal.is-visible .differentiator-line { transform: scaleX(1); }
+.differentiator p { position: relative; color: #C7B7A4; font-size: 0.95rem; line-height: 1.7; max-width: 42ch; }
+
+/* SCROLL REVEAL — shared fade/lift-in primitive (Reveal.tsx). Any element
+   can opt in by getting the "reveal" class; add "is-visible" (done in JS
+   once it enters the viewport) to play it. Kept generic on purpose so it
+   isn't re-invented per section. */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .differentiator-line { transition: none; }
+  .differentiators-glow { animation: none; }
+}
 
 /* EDIT INDEX — image-forward cards, deliberately NOT another hairline
    numbered row (the site already has four of those — Services, Process
@@ -513,6 +583,43 @@ section { position: relative; z-index: 10; background: var(--bg); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .faq-a p { padding: 0 0 26px clamp(52px, 7.4vw, 84px); color: var(--ink-muted); line-height: 1.65; font-size: 0.96rem; max-width: 620px; }
 .faq-item.is-open .faq-a { max-height: 320px; }
+
+/* PANEL VARIANT — shaded, boxed rows with no numeral (used only by the main
+   /faq page's categorized groups; the default numbered/hairline look above
+   is untouched for every other page using FaqAccordion). */
+.faq-list.is-panel { border-top: none; display: flex; flex-direction: column; gap: 12px; max-width: none; }
+.faq-list.is-panel .faq-item { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color .25s ease; }
+.faq-list.is-panel .faq-item.is-open { border-color: color-mix(in srgb, var(--terracotta) 40%, var(--border)); }
+.faq-list.is-panel .faq-q { grid-template-columns: 1fr auto; padding: clamp(18px, 2.4vw, 24px) clamp(18px, 2.4vw, 24px); }
+.faq-list.is-panel .faq-q-text { font-size: clamp(0.98rem, 1.5vw, 1.1rem); }
+.faq-list.is-panel .faq-a p { padding: 0 clamp(18px, 2.4vw, 24px) 22px; max-width: none; }
+.faq-list.is-panel .faq-item.is-open .faq-a { max-height: 700px; }
+
+/* /faq PAGE — asymmetric split hero (headline + short lede, not the usual
+   centered page-hero) over a sticky-sidebar + categorized-panels layout. */
+.faq-hero-grid { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: end; padding-bottom: clamp(28px, 4vw, 44px); border-bottom: 1px solid var(--border); }
+.faq-hero-grid h1 { max-width: none; }
+@media (min-width: 860px) { .faq-hero-grid { grid-template-columns: 1.5fr 1fr; gap: clamp(30px, 5vw, 64px); } }
+.faq-hero-lede { font-size: 1rem; line-height: 1.7; color: var(--ink-muted); max-width: 40ch; }
+@media (min-width: 860px) { .faq-hero-lede { text-align: right; margin-left: auto; } }
+
+.faq-layout { display: grid; grid-template-columns: 1fr; gap: clamp(36px, 5vw, 64px); margin-top: clamp(40px, 5vw, 60px); align-items: start; }
+@media (min-width: 860px) { .faq-layout { grid-template-columns: 260px 1fr; } }
+
+.faq-sidebar { position: static; }
+@media (min-width: 860px) { .faq-sidebar { position: sticky; top: 110px; } }
+.faq-sidebar-photo { aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); }
+.faq-sidebar-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.faq-sidebar-text { margin-top: 18px; font-size: 0.95rem; line-height: 1.55; color: var(--ink-muted); }
+.faq-sidebar-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.faq-sidebar-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--terracotta); text-decoration: none; }
+.faq-sidebar-link .arrow { transition: transform .2s ease; }
+.faq-sidebar-link:hover .arrow { transform: translateX(4px); }
+
+.faq-categories { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 56px); }
+.faq-category-head { margin-bottom: 18px; }
+.faq-category-head h2 { font-size: clamp(1.15rem, 2vw, 1.4rem); margin-top: 6px; }
+
 @media (max-width: 560px) {
   .faq-q { grid-template-columns: 32px 1fr auto; }
   .faq-a p { padding-left: 32px; }

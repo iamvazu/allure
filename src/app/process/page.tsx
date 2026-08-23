@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FaqAccordion from "@/components/FaqAccordion";
+import Reveal from "@/components/Reveal";
 import { editPackages } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Interior Design Process in Bangalore",
   description:
     "How The Allure Studio designs and builds full-home interiors across Bangalore — four stages, one project manager, and a fixed timeline before you commit to anything.",
+  alternates: { canonical: "/process" },
 };
 
 const steps = [
@@ -46,18 +48,22 @@ const steps = [
 
 const differentiators = [
   {
+    n: "01",
     title: "One studio, start to finish",
     text: "Design, modular production and installation sit under one roof. Most Bangalore projects pass between a designer, a kitchen showroom and a separate contractor — every handoff is where a timeline slips and a detail gets lost.",
   },
   {
+    n: "02",
     title: "A single point of contact",
     text: "One project manager, named at kickoff, coordinates every trade on your project — civil work, electrical, modular, soft furnishing. You're never chasing five people to find out what's happening on-site.",
   },
   {
+    n: "03",
     title: "See it before you sign",
     text: "The studio's Experience Center in Jakkur lets you handle real finishes, materials and furniture in person before committing — not a rendering, the actual material under your own light.",
   },
   {
+    n: "04",
     title: "Bangalore only, by design",
     text: "Every project is local. No fly-in design team, no site supervision happening over a phone call from another city — just a studio that works exclusively across Bangalore and knows its sites, vendors and timelines.",
   },
@@ -174,6 +180,7 @@ export default function ProcessPage() {
       </section>
 
       <section className="differentiators-section">
+        <div className="differentiators-glow" aria-hidden="true" />
         <div className="wrap">
           <div className="section-head">
             <div>
@@ -182,11 +189,13 @@ export default function ProcessPage() {
             </div>
           </div>
           <div className="differentiators-grid">
-            {differentiators.map((d) => (
-              <div className="differentiator" key={d.title}>
+            {differentiators.map((d, i) => (
+              <Reveal className="differentiator" delay={i * 110} key={d.title}>
+                <span className="differentiator-num" aria-hidden="true">{d.n}</span>
                 <h3>{d.title}</h3>
+                <span className="differentiator-line" aria-hidden="true" />
                 <p>{d.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

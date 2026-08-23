@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "The Allure Studio is a Bengaluru-based interior design studio building Everlasting Luxury across the city.",
+  title: "About Us — Bangalore Interior Design Studio",
+  description: "The Allure Studio is a Bengaluru-based interior design studio building Everlasting Luxury across the city — real projects, one studio, start to handover.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

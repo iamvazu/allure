@@ -3,8 +3,9 @@ import PortfolioCards from "@/components/PortfolioCards";
 import { projects } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Completed interior design projects across Bangalore by The Allure Studio.",
+  title: "Portfolio — Bangalore Interior Design Projects",
+  description: "Completed interior design projects across Bangalore by The Allure Studio — real homes, documented room by room.",
+  alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {

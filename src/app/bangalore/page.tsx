@@ -5,6 +5,7 @@ import { localities } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Interior Designers Across Bangalore",
   description: "The Allure Studio designs homes across every part of Bangalore — find your locality.",
+  alternates: { canonical: "/bangalore" },
 };
 
 const REGION_ORDER = ["North", "South", "East", "West"] as const;

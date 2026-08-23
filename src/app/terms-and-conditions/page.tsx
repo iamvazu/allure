@@ -4,6 +4,7 @@ import { brand } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "The terms that govern use of theallurestudio.com and the relationship between The Allure Studio and its clients.",
+  alternates: { canonical: "/terms-and-conditions" },
 };
 
 const LAST_UPDATED = "23 August 2026";

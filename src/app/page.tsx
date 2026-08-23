@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollHero from "@/components/ScrollHero";
 import ServiceGrid from "@/components/ServiceGrid";
@@ -11,6 +12,13 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import JournalSection from "@/components/JournalSection";
 import { flagshipProject, projects, services, faqs, localities, aanganProject, galleryHighlights, stats, testimonials } from "@/lib/data";
 import { journalPosts } from "@/lib/journal";
+
+// title/description are intentionally not repeated here — they're inherited
+// from layout.tsx's default metadata (which is exactly this page's title
+// and description). Only the canonical URL needs setting explicitly.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const journeySteps = [
   { n: "01", title: "Initial Consultation", text: "A designer walks the space with you and scopes budget and direction honestly." },

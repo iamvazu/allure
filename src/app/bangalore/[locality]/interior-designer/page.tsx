@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { localities, services, projects, brand } from "@/lib/data";
 import FaqAccordion from "@/components/FaqAccordion";
+import { truncateForMeta } from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locality:
   if (!locality) return {};
   return {
     title: `Interior Designer in ${locality.name}, Bangalore`,
-    description: locality.blurb,
+    // locality.blurb is written as one long on-page sentence (often 200+
+    // characters) — trimmed here to what a meta description tag actually
+    // fits, so search engines show the real copy instead of truncating it.
+    description: truncateForMeta(locality.blurb),
+    alternates: { canonical: `/bangalore/${localitySlug}/interior-designer` },
   };
 }
 

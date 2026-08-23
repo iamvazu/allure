@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { brand } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Book a Consultation",
-  description: "Book a consultation with The Allure Studio — interior designers serving all of Bangalore.",
+  title: "Contact Us — Book a Free Consultation",
+  description: "Book a free, no-obligation consultation with The Allure Studio — interior designers serving all of Bangalore. Call, email, or visit the Jakkur studio.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

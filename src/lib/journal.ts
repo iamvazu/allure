@@ -15,6 +15,14 @@ export type JournalPost = {
   coverImage: string;
   author: string;
   body: string[];
+  // Optional, shorter title/description for the <title> tag and meta
+  // description specifically — the on-page title/excerpt above are good
+  // editorial copy but a few run past what search engines render before
+  // truncating (~60 chars for a title, ~155 for a description once the
+  // " | The Allure Studio" suffix is added). Falls back to title/excerpt
+  // in journal/[slug]'s generateMetadata when not set.
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export const journalPosts: JournalPost[] = [
@@ -23,6 +31,9 @@ export const journalPosts: JournalPost[] = [
     title: "Designing Small Bangalore Apartments: What Actually Works",
     excerpt:
       "Koramangala and HSR Layout apartments rarely give you extra square footage to spare. Here's what actually earns its keep in a compact Bangalore floor plan — before a single finish is chosen.",
+    seoTitle: "Designing Small Bangalore Apartments",
+    seoDescription:
+      "What actually earns its keep in a compact Bangalore floor plan — space planning before a single finish is chosen.",
     category: "Space Planning",
     coverImage: "/images/localities/koramangala.jpg",
     author: "The Allure Studio Team",
@@ -39,6 +50,9 @@ export const journalPosts: JournalPost[] = [
     title: "The Case for Limewash — And Why We Specify It in Bangalore Homes",
     excerpt:
       "A breathable, matte mineral finish built for humid climates, not a trend. Here's why limewash keeps showing up in the studio's material palette for Bangalore homes.",
+    seoTitle: "The Case for Limewash in Bangalore Homes",
+    seoDescription:
+      "A breathable, matte mineral finish built for Bangalore's climate — why limewash keeps showing up in the studio's material palette.",
     category: "Materials & Finishes",
     coverImage: "/images/about/studio-detail.jpg",
     author: "The Allure Studio Team",
@@ -54,6 +68,9 @@ export const journalPosts: JournalPost[] = [
     title: "From Brief to Build: How We Approach Every Project",
     excerpt:
       "Four stages, one project manager, and a fixed timeline before you commit to anything. Here's what actually happens between your first consultation and handover day.",
+    seoTitle: "From Brief to Build: Our Design Process",
+    seoDescription:
+      "Four stages, one project manager, a fixed timeline before you commit — what happens between your first consultation and handover.",
     category: "Behind the Process",
     coverImage: "/images/process/hero.jpg",
     author: "The Allure Studio Team",

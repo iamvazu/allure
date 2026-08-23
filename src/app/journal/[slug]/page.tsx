@@ -16,8 +16,9 @@ export async function generateMetadata({
   const post = journalPosts.find((p) => p.slug === slug);
   if (!post) return {};
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
+    alternates: { canonical: `/journal/${slug}` },
   };
 }
 

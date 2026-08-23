@@ -5,6 +5,7 @@ import { services } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Interior Design Services in Bangalore",
   description: "Every service The Allure Studio offers across Bangalore — from full-home interior design to modular kitchens, wardrobes and styling.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

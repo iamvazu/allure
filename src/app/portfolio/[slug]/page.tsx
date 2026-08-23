@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/data";
 import ScrollHero from "@/components/ScrollHero";
+import { truncateForMeta } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -12,9 +13,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
+  // project.eyebrow is lowercase-styled on-page ("case study", "flagship
+  // project") — title-cased here for a title tag, with "Bangalore" added
+  // for location relevance since the on-page eyebrow doesn't include it.
+  const eyebrowTitle = project.eyebrow.replace(/\b\w/g, (c) => c.toUpperCase());
   return {
-    title: `${project.name} — ${project.eyebrow}`,
-    description: project.summary,
+    title: `${project.name} — ${eyebrowTitle} in Bangalore`,
+    description: truncateForMeta(project.summary),
+    alternates: { canonical: `/portfolio/${slug}` },
   };
 }
 
