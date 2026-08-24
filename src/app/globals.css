@@ -677,6 +677,35 @@ footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
   .contact-split { grid-template-columns: 1fr; }
 }
 
+/* QUOTE FORM — /contact "Get an Instant Quote" section. See the comment at
+   the top of QuoteForm.tsx for why this sends via WhatsApp/email rather
+   than a fake "submitted" state — there's no backend behind it. */
+.quote-form-card {
+  border: 1px solid var(--border); border-radius: 4px; background: var(--surface);
+  padding: clamp(24px, 4vw, 44px); max-width: 760px;
+}
+.quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 18px; }
+@media (max-width: 620px) { .quote-grid { grid-template-columns: 1fr; } }
+.quote-field { display: flex; flex-direction: column; gap: 7px; }
+.quote-field-full { grid-column: 1 / -1; }
+.quote-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
+.quote-input {
+  padding: 12px 14px; border-radius: 2px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--ink); font-size: 0.92rem; font-family: var(--font-body);
+  width: 100%;
+}
+.quote-input:focus { outline: none; border-color: var(--terracotta); }
+.quote-select { appearance: auto; cursor: pointer; }
+.quote-checkbox-row {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 26px;
+  font-size: 0.85rem; color: var(--ink-muted); cursor: pointer; line-height: 1.5;
+}
+.quote-checkbox-row input[type="checkbox"] { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--terracotta); flex-shrink: 0; }
+.quote-terms-link { color: var(--terracotta); text-decoration: underline; text-underline-offset: 2px; }
+.quote-error { margin-top: 14px; font-size: 0.85rem; color: var(--terracotta); }
+.quote-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+.quote-note { margin-top: 16px; font-size: 0.76rem; color: var(--ink-muted); line-height: 1.5; max-width: 480px; }
+
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 .gallery-grid figure { margin: 0; border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); }
 .gallery-grid img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3; }

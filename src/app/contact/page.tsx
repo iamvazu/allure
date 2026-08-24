@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { brand } from "@/lib/data";
+import QuoteForm from "@/components/QuoteForm";
 
 export const metadata: Metadata = {
   title: "Contact Us — Book a Free Consultation",
@@ -34,6 +35,24 @@ export default function ContactPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="editorial-photo" src="/images/contact/atmosphere.jpg" alt="Studio atmosphere" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 0 130px" }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Get an instant quote</span>
+              <h2>Tell us about your space</h2>
+              <p className="lede" style={{ marginTop: 12, maxWidth: 620 }}>
+                A few details on your property and timeline so a designer can get back to you with
+                a real cost bracket — no generic package, no hard pitch.
+              </p>
+            </div>
+          </div>
+          <div className="quote-form-card">
+            <QuoteForm />
           </div>
         </div>
       </section>
