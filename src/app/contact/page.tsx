@@ -10,52 +10,52 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
-      <section className="page-hero">
-        <div className="wrap">
-          <span className="eyebrow">Start here</span>
-          <h1>Book your first consultation</h1>
-          <p className="lede">No obligation, no hard pitch — just an honest read on scope, timeline and budget for your space.</p>
-        </div>
-      </section>
-      <section style={{ padding: "0 0 120px" }}>
-        <div className="wrap">
-          <div className="contact-split">
-            <div style={{ border: "1px solid var(--border)", borderRadius: 4, padding: "clamp(24px,4vw,40px)", background: "var(--surface)" }}>
-              <p style={{ marginBottom: 24 }}>
-                Call or email directly, or visit the Experience Center in Jakkur by appointment.
-              </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+    <main style={{ padding: "clamp(120px, 16vh, 180px) 0 clamp(60px, 10vh, 120px)" }}>
+      <div className="wrap">
+        <div className="contact-unified-layout">
+          {/* Left Column (Sticky) */}
+          <div className="contact-sidebar">
+            <span className="eyebrow">Start here</span>
+            <h1 style={{ marginTop: 12, marginBottom: 16 }}>Book your first consultation</h1>
+            <p className="lede" style={{ marginBottom: 48, maxWidth: "42ch" }}>
+              No obligation, no hard pitch — just an honest read on scope, timeline and budget for your space.
+            </p>
+
+            <div style={{ marginBottom: 48 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
                 <a className="btn btn-solid" href={brand.phoneHref}>Call {brand.phone}</a>
                 <a className="btn btn-ghost" href={`mailto:${brand.email}`}>{brand.email}</a>
               </div>
-              <p style={{ marginTop: 28, fontSize: "0.85rem" }}>{brand.address}</p>
+              <p style={{ marginTop: 24, fontSize: "0.95rem", color: "var(--ink-muted)", lineHeight: 1.6, maxWidth: "34ch" }}>
+                <strong style={{ color: "var(--ink)", fontWeight: 600, display: "block", marginBottom: 4 }}>Experience Center</strong>
+                {brand.address}
+              </p>
             </div>
-            <div className="editorial-photo-frame is-tall">
+
+            <div className="editorial-photo-frame is-wide" style={{ maxWidth: 460 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="editorial-photo" src="/images/contact/atmosphere.jpg" alt="Studio atmosphere" />
             </div>
           </div>
-        </div>
-      </section>
 
-      <section style={{ padding: "0 0 130px" }}>
-        <div className="wrap">
-          <div className="section-head">
-            <div>
-              <span className="eyebrow">Get an instant quote</span>
-              <h2>Tell us about your space</h2>
-              <p className="lede" style={{ marginTop: 12, maxWidth: 620 }}>
-                A few details on your property and timeline so a designer can get back to you with
-                a real cost bracket — no generic package, no hard pitch.
-              </p>
+          {/* Right Column (Scrolls) */}
+          <div className="contact-form-area">
+            <div className="section-head" style={{ marginBottom: 32 }}>
+              <div>
+                <span className="eyebrow">Get an instant quote</span>
+                <h2 style={{ marginTop: 8 }}>Tell us about your space</h2>
+                <p className="lede" style={{ marginTop: 12, maxWidth: 620, fontSize: "1rem" }}>
+                  A few details on your property and timeline so a designer can get back to you with
+                  a real cost bracket — no generic packages, just an honest estimate.
+                </p>
+              </div>
+            </div>
+            <div className="quote-form-card" style={{ maxWidth: "none" }}>
+              <QuoteForm />
             </div>
           </div>
-          <div className="quote-form-card">
-            <QuoteForm />
-          </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 }

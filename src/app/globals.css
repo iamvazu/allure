@@ -672,9 +672,13 @@ footer { background: var(--ink); color: #EFE4D6; padding: 70px 0 30px; }
 @media (max-width: 760px) {
   .about-split { grid-template-columns: 1fr !important; }
 }
-.contact-split { display: grid; grid-template-columns: 1fr 0.85fr; gap: clamp(28px, 4vw, 56px); align-items: stretch; max-width: 980px; }
-@media (max-width: 760px) {
-  .contact-split { grid-template-columns: 1fr; }
+.contact-unified-layout { display: grid; grid-template-columns: 1fr; gap: clamp(48px, 6vw, 80px); align-items: start; }
+@media (min-width: 900px) {
+  .contact-unified-layout { grid-template-columns: 1fr 1.15fr; }
+}
+.contact-sidebar { position: static; }
+@media (min-width: 900px) {
+  .contact-sidebar { position: sticky; top: 120px; }
 }
 
 /* QUOTE FORM — /contact "Get an Instant Quote" section. See the comment at
